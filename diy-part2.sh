@@ -76,3 +76,5 @@ rm -rf feeds/luci/applications/luci-app-upnp
 svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-upnp feeds/luci/applications/luci-app-upnp
 
 sed -i 's#mount -t cifs#mount.cifs#g' feeds/other/lean/luci-app-cifs-mount/root/etc/init.d/cifs
+
+sed -i 's#<%+cbi/tabmenu%>##g' package/small-package/luci-app-nginx-manager/luasrc/view/nginx-manager/index.htm
