@@ -42,8 +42,7 @@ svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-docker p
 rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf package/small-package/luci-app-openvpn-server
 rm -rf package/small-package/openvpn-easy-rsa-whisky
-rm -rf package/small-package/luci-app-wrtbwmon
-rm -rf package/small-package/wrtbwmon
+rm -rf package/feeds/other/luci-app-wrtbwmon/
 rm -rf package/small-package/luci-app-koolproxyR
 rm -rf package/small-package/luci-app-godproxy
 rm -rf package/small-package/luci-app-argon*
