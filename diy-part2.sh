@@ -24,31 +24,24 @@ sed -i 's/invalid users = root/#invalid users = root/g' feeds/packages/net/samba
 
 # 拉取软件包
 
-#git clone https://github.com/ophub/luci-app-amlogic.git package/luci-app-amlogic
-git clone https://github.com/kenzok8/small-package package/small-package
-#git clone -b luci https://github.com/pexcn/openwrt-chinadns-ng.git package/luci-app-chinadns-ng
-#svn co https://github.com/immortalwrt-collections/openwrt-gowebdav/trunk/luci-app-gowebdav package/luci-app-gowebdav
-#svn co https://github.com/immortalwrt-collections/openwrt-gowebdav/trunk/gowebdav package/gowebdav
+git clone https://github.com/kiddin9/openwrt-packages.git  package/openwrt-packages
 git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
 svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-openvpn-server package/luci-app-openvpn-server
-svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-docker package/luci-app-docker
 
 
 # 删除重复包
 
-# rm -rf feeds/luci/applications/luci-app-netdata
 rm -rf feeds/luci/themes/luci-theme-argon
-rm -rf package/small-package/luci-app-openvpn-server
-rm -rf package/small-package/openvpn-easy-rsa-whisky
-rm -rf package/feeds/other/luci-app-wrtbwmon/
-rm -rf package/small-package/luci-app-koolproxyR
-rm -rf package/small-package/luci-app-godproxy
-rm -rf package/small-package/luci-app-argon*
-rm -rf package/small-package/luci-theme-argon*
-rm -rf package/small-package/luci-app-amlogic
-rm -rf package/small-package/luci-app-unblockneteasemusic
+rm -rf package/openwrt-packages/luci-app-openvpn-server
+rm -rf package/openwrt-packages/openvpn-easy-rsa-whisky
+rm -rf package/openwrt-packages/luci-app-argon*
+rm -rf package/openwrt-packages/luci-theme-argon*
+rm -rf package/openwrt-packages/luci-app-amlogic
+rm -rf package/openwrt-packages/luci-app-unblockneteasemusic
+rm -rf package/openwrt-packages/luci-app-frpc
+rm -rf package/openwrt-packages/luci-app-frps
 
 
 # 其他调整
@@ -61,12 +54,8 @@ curl -L https://github.com/UnblockNeteaseMusic/server/raw/enhanced/ca.crt -o $NA
 curl -L https://github.com/UnblockNeteaseMusic/server/raw/enhanced/server.crt -o $NAME/core/server.crt
 curl -L https://github.com/UnblockNeteaseMusic/server/raw/enhanced/server.key -o $NAME/core/server.key
 
-#sed -i 's#https://github.com/breakings/OpenWrt#https://github.com/quanjindeng/Actions_OpenWrt-Amlogic2#g' package/luci-app-amlogic/luci-app-amlogic/root/etc/config/amlogic
-#sed -i 's#ARMv8#openwrt_armvirt#g' package/luci-app-amlogic/luci-app-amlogic/root/etc/config/amlogic
-#sed -i 's#opt/kernel#kernel#g' package/luci-app-amlogic/luci-app-amlogic/root/etc/config/amlogic
-
 sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/luci-app-openvpn-server/Makefile
-sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/luci-app-docker/Makefile
+#sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/luci-app-docker/Makefile
 rm -rf feeds/luci/applications/luci-app-frpc
 svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-frpc feeds/luci/applications/luci-app-frpc
 rm -rf feeds/luci/applications/luci-app-frps
@@ -74,6 +63,6 @@ svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-frps fee
 rm -rf feeds/luci/applications/luci-app-upnp
 svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-upnp feeds/luci/applications/luci-app-upnp
 
-sed -i 's#mount -t cifs#mount.cifs#g' feeds/other/lean/luci-app-cifs-mount/root/etc/init.d/cifs
+sed -i 's#mount -t cifs#mount.cifs#g' package/openwrt-packages/luci-app-cifs-mount/root/etc/init.d/cifs
 
-sed -i 's#<%+cbi/tabmenu%>##g' package/small-package/luci-app-nginx-manager/luasrc/view/nginx-manager/index.htm
+sed -i 's#<%+cbi/tabmenu%>##g' package/openwrt-packages/luci-app-nginx-manager/luasrc/view/nginx-manager/index.htm
