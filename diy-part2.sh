@@ -24,7 +24,7 @@ sed -i 's/invalid users = root/#invalid users = root/g' feeds/packages/net/samba
 
 # 拉取软件包
 
-git clone https://github.com/kiddin9/openwrt-packages.git  package/openwrt-packages
+git clone https://github.com/kenzok8/small-package.git  package/openwrt-packages
 git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
@@ -42,8 +42,6 @@ rm -rf package/openwrt-packages/luci-app-amlogic
 rm -rf package/openwrt-packages/luci-app-unblockneteasemusic
 rm -rf package/openwrt-packages/luci-app-frpc
 rm -rf package/openwrt-packages/luci-app-frps
-rm -rf package/system/opkg
-rm -rf feeds/luci/applications/luci-app-opkg
 rm -rf feeds/luci/applications/luci-app-dockerman
 rm -rf feeds/luci/applications/luci-app-frps
 rm -rf feeds/luci/applications/luci-app-frpc
