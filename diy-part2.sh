@@ -29,6 +29,7 @@ git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-ap
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
 svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-openvpn-server package/luci-app-openvpn-server
+git clone https://github.com/cnsilvan/luci-app-unblockneteasemusic.git package/unblockneteasemusic-go
 
 
 # 删除重复包
