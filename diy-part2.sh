@@ -42,6 +42,11 @@ rm -rf package/openwrt-packages/luci-app-amlogic
 rm -rf package/openwrt-packages/luci-app-unblockneteasemusic
 rm -rf package/openwrt-packages/luci-app-frpc
 rm -rf package/openwrt-packages/luci-app-frps
+rm -rf package/system/opkg
+rm -rf feeds/luci/applications/luci-app-opkg
+rm -rf feeds/luci/applications/luci-app-dockerman
+rm -rf feeds/luci/applications/luci-app-frps
+rm -rf feeds/luci/applications/luci-app-frpc
 
 
 # 其他调整
