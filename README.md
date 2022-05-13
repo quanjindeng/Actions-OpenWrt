@@ -1,9 +1,6 @@
 # Actions-OpenWrt
 利用Actions云编译，一键生成x86_64平台的EFI版本OpenWrt固件。
 
-使用zsh替换bash;
-使用Nginx替换默认uhttpd;
-使用openssh作为默认ssh服务。
 
 
 ## 感谢
