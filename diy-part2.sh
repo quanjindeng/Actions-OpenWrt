@@ -76,4 +76,4 @@ sed -i 's#mount -t cifs#mount.cifs#g' feeds/luci/applications/luci-app-cifs-moun
 
 #sed -i 's#<%+cbi/tabmenu%>##g' package/small-packages/luci-app-nginx-manager/luasrc/view/nginx-manager/index.htm
 
-mkdir feeds/packages/net/openssh/patches && curl -L https://github.com/liwenjie119/packages/raw/2410fe38ad812dd70ae163b93731574d3faaa50c/net/openssh/patches/0001-fix-root-login.patch -o feeds/packages/net/openssh/patches/0001-fix-root-login.patch
+#mkdir feeds/packages/net/openssh/patches && curl -L https://github.com/liwenjie119/packages/raw/2410fe38ad812dd70ae163b93731574d3faaa50c/net/openssh/patches/0001-fix-root-login.patch -o feeds/packages/net/openssh/patches/0001-fix-root-login.patch
