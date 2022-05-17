@@ -5,8 +5,8 @@
 
 ## 感谢
 - [Lean's OpenWrt源码仓库](https://github.com/coolsnowwolf/lede)
-- [kenzok8额外的软件包](https://github.com/kenzok8/small-package)
-- [p3terx云编译教程](https://p3terx.com/archives/build-openwrt-with-github-actions.html)
+- [kenzok8 额外的软件包](https://github.com/kenzok8/small-package)
+- [p3terx 云编译教程](https://p3terx.com/archives/build-openwrt-with-github-actions.html)
 - 所有OpenWrt源码贡献者、插件开发者
 
 
