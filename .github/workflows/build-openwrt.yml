@@ -120,6 +120,7 @@ jobs:
         rm -rf *.buildinfo
         rm -rf *.manifest
         rm -rf *-kernel.bin
+        rm -rf *-rootfs.img
         rm -rf *-rootfs.img.gz
         rm -rf sha256sums
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
