@@ -2438,7 +2438,7 @@ CONFIG_PACKAGE_kmod-ipt-quota2=y
 CONFIG_PACKAGE_kmod-ipt-raw=y
 CONFIG_PACKAGE_kmod-ipt-raw6=y
 CONFIG_PACKAGE_kmod-ipt-rpfilter=y
-CONFIG_PACKAGE_kmod-ipt-rtpengine=y
+# CONFIG_PACKAGE_kmod-ipt-rtpengine is not set
 CONFIG_PACKAGE_kmod-ipt-sysrq=y
 CONFIG_PACKAGE_kmod-ipt-tarpit=y
 CONFIG_PACKAGE_kmod-ipt-tee=y
