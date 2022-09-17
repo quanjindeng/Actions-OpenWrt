@@ -58,7 +58,7 @@ rm -rf package/small-package/luci-app-koolproxyR
 rm -rf package/small-package/luci-app-godproxy
 rm -rf package/small-package/luci-app-argon*
 rm -rf package/small-package/luci-theme-argon*
-rm -rf package/small-package/luci-app-amlogic
+# rm -rf package/small-package/luci-app-amlogic
 rm -rf package/small-package/luci-app-unblockneteasemusic
 
 
