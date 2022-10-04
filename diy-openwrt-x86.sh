@@ -30,7 +30,6 @@ git clone --depth 1 https://github.com/sbwml/openwrt-alist package/deng/alist
 svn export https://github.com/messense/aliyundrive-webdav/trunk/openwrt ackage/deng/luci-aliyundrive-webdav
 git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config package/deng/luci-app-argon-config
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon package/deng/luci-theme-argon
-svn export https://github.com/Lienol/openwrt-package/branches/other/lean/luci-app-autoreboot ackage/deng/luci-app-autoreboot
 svn export https://github.com/mingxiaoyu/luci-app-cloudflarespeedtest/trunk/applications/luci-app-cloudflarespeedtest ackage/deng/luci-app-cloudflarespeedtest
 git clone --depth 1 https://github.com/sensec/ddns-scripts_aliyun package/deng/ddns-scripts_aliyun
 svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-fileassistant ackage/deng/luci-app-fileassistant
