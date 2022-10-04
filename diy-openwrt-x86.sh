@@ -32,6 +32,7 @@ git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config package/d
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon package/deng/luci-theme-argon
 svn export https://github.com/mingxiaoyu/luci-app-cloudflarespeedtest/trunk/applications/luci-app-cloudflarespeedtest ackage/deng/luci-app-cloudflarespeedtest
 git clone --depth 1 https://github.com/sensec/ddns-scripts_aliyun package/deng/ddns-scripts_aliyun
+svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-diskman package/deng/luci-app-diskman
 svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-fileassistant ackage/deng/luci-app-fileassistant
 git clone --depth 1 https://github.com/jerrykuku/luci-app-go-aliyundrive-webdav package/deng/luci-app-go-aliyundrive-webdav
 git clone --depth 1 https://github.com/jerrykuku/go-aliyundrive-webdav package/deng/go-aliyundrive-webdav
