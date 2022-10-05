@@ -25,8 +25,10 @@ sed -i 's/invalid users = root/#invalid users = root/g' feeds/packages/net/samba
 
 # 删除重复包
 
-#rm -rf package/feeds/luci/applications/luci-app-ddns
-#rm -rf feeds/luci/applications/luci-app-ddns
+rm -rf package/feeds/luci/applications/luci-app-ddns
+rm -rf feeds/luci/applications/luci-app-ddns
+rm -rf package/feeds/packages/ddns-scripts
+rm -rf feeds/packages/net/ddns-scripts
 
 # 拉取软件包
 
@@ -38,10 +40,10 @@ git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config package/d
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon package/deng/luci-theme-argon
 svn export https://github.com/mingxiaoyu/luci-app-cloudflarespeedtest/trunk/applications/luci-app-cloudflarespeedtest package/deng/luci-app-cloudflarespeedtest
 svn export https://github.com/immortalwrt-collections/openwrt-cdnspeedtest/trunk/cdnspeedtest package/deng/cdnspeedtest
-# svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-ddns package/deng/luci-app-ddns
-# svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/ddns-scripts_aliyun package/deng/ddns-scripts_aliyun
-# svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/ddns-scripts_dnspod package/deng/ddns-scripts_dnspod
-# svn export https://github.com/coolsnowwolf/packages/trunk/net/ddns-scripts package/deng/ddns-scripts
+svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-ddns package/deng/luci-app-ddns
+svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/ddns-scripts_aliyun package/deng/ddns-scripts_aliyun
+svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/ddns-scripts_dnspod package/deng/ddns-scripts_dnspod
+svn export https://github.com/coolsnowwolf/packages/trunk/net/ddns-scripts package/deng/ddns-scripts
 svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-diskman package/deng/luci-app-diskman
 svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-fileassistant package/deng/luci-app-fileassistant
 git clone --depth 1 https://github.com/jerrykuku/luci-app-go-aliyundrive-webdav package/deng/luci-app-go-aliyundrive-webdav
