@@ -25,7 +25,6 @@ sed -i 's/invalid users = root/#invalid users = root/g' feeds/packages/net/samba
 
 # 删除重复包
 
-rm -rf feeds/luci/applications/luci-app-upnp
 
 
 
@@ -34,10 +33,11 @@ rm -rf feeds/luci/applications/luci-app-upnp
 git clone --depth 1 https://github.com/rufengsuixing/luci-app-adguardhome package/deng/luci-app-adguardhome
 git clone --depth 1 https://github.com/AdguardTeam/AdGuardHome package/deng/adguardhome
 git clone --depth 1 https://github.com/sbwml/openwrt-alist package/deng/alist
-svn export https://github.com/messense/aliyundrive-webdav/trunk/openwrt package/deng/luci-aliyundrive-webdav
+svn export https://github.com/messense/aliyundrive-webdav/trunk/openwrt package/deng
 git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config package/deng/luci-app-argon-config
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon package/deng/luci-theme-argon
 svn export https://github.com/mingxiaoyu/luci-app-cloudflarespeedtest/trunk/applications/luci-app-cloudflarespeedtest package/deng/luci-app-cloudflarespeedtest
+svn export https://github.com/immortalwrt-collections/openwrt-cdnspeedtest/trunk/cdnspeedtest package/deng/cdnspeedtest
 git clone --depth 1 https://github.com/sensec/ddns-scripts_aliyun package/deng/ddns-scripts_aliyun
 svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-diskman package/deng/luci-app-diskman
 svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-fileassistant package/deng/luci-app-fileassistant
@@ -58,13 +58,24 @@ svn export https://github.com/coolsnowwolf/packages/trunk/libs/rblibtorrent pack
 git clone --depth 1 https://github.com/tty228/luci-app-serverchan package/deng/luci-app-serverchan
 git clone --depth 1 https://github.com/ZeaKyX/luci-app-speedtest-web package/deng/luci-app-speedtest-web
 git clone --depth 1 https://github.com/ZeaKyX/speedtest-web package/deng/speedtest-web
-svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-turboacc package/deng/luci-app-turboacc
-svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-upnp package/deng/luci-app-upnp
 svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-vsftpd package/deng/luci-app-vsftpd
 svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/vsftpd-alt package/deng/vsftpd-alt
 svn export https://github.com/sundaqiang/openwrt-packages/trunk/luci-app-wolplus package/deng/luci-app-wolplus
-git clone --depth 1 https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic package/deng/luci-app-unblockneteasemusic
+# git clone --depth 1 https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic package/deng/luci-app-unblockneteasemusic
 
+
+# Add Fullcone NAT
+
+rm -rf package/network/utils/nftables
+rm -rf package/libs/libnftnl
+rm -rf package/network/config/firewall4
+
+svn export https://github.com/wongsyrone/lede-1/trunk/package/network/utils/nftables package/network/utils/nftables
+svn export https://github.com/wongsyrone/lede-1/trunk/package/libs/libnftnl package/libs/libnftnl
+svn export https://github.com/wongsyrone/lede-1/trunk/package/network/config/firewall4 package/network/config/firewall4
+
+svn export https://github.com/wongsyrone/lede-1/trunk/package/external/nft-fullcone package/deng/nft-fullcone
+svn export https://github.com/wongsyrone/lede-1/trunk/package/external/sfe package/deng/sfe
 
 
 # 其他调整
@@ -72,17 +83,16 @@ git clone --depth 1 https://github.com/UnblockNeteaseMusic/luci-app-unblocknetea
 sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-openvpn-server/Makefile
 sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-qbittorrent/Makefile
 sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-vsftpd/Makefile
-sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-turboacc/Makefile
-sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-upnp/Makefile
+sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-diskman/Makefile
 
-NAME=$"package/deng/luci-app-unblockneteasemusic/root/usr/share/unblockneteasemusic" && mkdir -p $NAME/core
-curl 'https://api.github.com/repos/UnblockNeteaseMusic/server/commits?sha=enhanced&path=precompiled' -o commits.json
-echo "$(grep sha commits.json | sed -n "1,1p" | cut -c 13-52)">"$NAME/core_local_ver"
-curl -L https://github.com/UnblockNeteaseMusic/server/raw/enhanced/precompiled/app.js -o $NAME/core/app.js
-curl -L https://github.com/UnblockNeteaseMusic/server/raw/enhanced/precompiled/bridge.js -o $NAME/core/bridge.js
-curl -L https://github.com/UnblockNeteaseMusic/server/raw/enhanced/ca.crt -o $NAME/core/ca.crt
-curl -L https://github.com/UnblockNeteaseMusic/server/raw/enhanced/server.crt -o $NAME/core/server.crt
-curl -L https://github.com/UnblockNeteaseMusic/server/raw/enhanced/server.key -o $NAME/core/server.key
+# NAME=$"package/deng/luci-app-unblockneteasemusic/root/usr/share/unblockneteasemusic" && mkdir -p $NAME/core
+# curl 'https://api.github.com/repos/UnblockNeteaseMusic/server/commits?sha=enhanced&path=precompiled' -o commits.json
+# echo "$(grep sha commits.json | sed -n "1,1p" | cut -c 13-52)">"$NAME/core_local_ver"
+# curl -L https://github.com/UnblockNeteaseMusic/server/raw/enhanced/precompiled/app.js -o $NAME/core/app.js
+# curl -L https://github.com/UnblockNeteaseMusic/server/raw/enhanced/precompiled/bridge.js -o $NAME/core/bridge.js
+# curl -L https://github.com/UnblockNeteaseMusic/server/raw/enhanced/ca.crt -o $NAME/core/ca.crt
+# curl -L https://github.com/UnblockNeteaseMusic/server/raw/enhanced/server.crt -o $NAME/core/server.crt
+# curl -L https://github.com/UnblockNeteaseMusic/server/raw/enhanced/server.key -o $NAME/core/server.key
 
 
 
