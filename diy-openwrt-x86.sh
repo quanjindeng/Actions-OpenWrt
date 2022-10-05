@@ -25,8 +25,8 @@ sed -i 's/invalid users = root/#invalid users = root/g' feeds/packages/net/samba
 
 # 删除重复包
 
-rm -rf package/feeds/luci/applications/luci-app-ddns
-rm -rf feeds/luci/applications/luci-app-ddns
+#rm -rf package/feeds/luci/applications/luci-app-ddns
+#rm -rf feeds/luci/applications/luci-app-ddns
 
 # 拉取软件包
 
@@ -38,10 +38,10 @@ git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config package/d
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon package/deng/luci-theme-argon
 svn export https://github.com/mingxiaoyu/luci-app-cloudflarespeedtest/trunk/applications/luci-app-cloudflarespeedtest package/deng/luci-app-cloudflarespeedtest
 svn export https://github.com/immortalwrt-collections/openwrt-cdnspeedtest/trunk/cdnspeedtest package/deng/cdnspeedtest
-svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-ddns package/deng/luci-app-ddns
-svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/ddns-scripts_aliyun package/deng/ddns-scripts_aliyun
-svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/ddns-scripts_dnspod package/deng/ddns-scripts_dnspod
-svn export https://github.com/coolsnowwolf/packages/trunk/net/ddns-scripts package/deng/ddns-scripts
+# svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-ddns package/deng/luci-app-ddns
+# svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/ddns-scripts_aliyun package/deng/ddns-scripts_aliyun
+# svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/ddns-scripts_dnspod package/deng/ddns-scripts_dnspod
+# svn export https://github.com/coolsnowwolf/packages/trunk/net/ddns-scripts package/deng/ddns-scripts
 svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-diskman package/deng/luci-app-diskman
 svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-fileassistant package/deng/luci-app-fileassistant
 git clone --depth 1 https://github.com/jerrykuku/luci-app-go-aliyundrive-webdav package/deng/luci-app-go-aliyundrive-webdav
@@ -69,16 +69,16 @@ svn export https://github.com/sundaqiang/openwrt-packages/trunk/luci-app-wolplus
 
 # Add Fullcone NAT
 
-rm -rf package/network/utils/nftables
-rm -rf package/libs/libnftnl
-rm -rf package/network/config/firewall4
+#rm -rf package/network/utils/nftables
+#rm -rf package/libs/libnftnl
+#rm -rf package/network/config/firewall4
 
-svn export https://github.com/wongsyrone/lede-1/trunk/package/network/utils/nftables package/network/utils/nftables
-svn export https://github.com/wongsyrone/lede-1/trunk/package/libs/libnftnl package/libs/libnftnl
-svn export https://github.com/wongsyrone/lede-1/trunk/package/network/config/firewall4 package/network/config/firewall4
+#svn export https://github.com/wongsyrone/lede-1/trunk/package/network/utils/nftables package/network/utils/nftables
+#svn export https://github.com/wongsyrone/lede-1/trunk/package/libs/libnftnl package/libs/libnftnl
+#svn export https://github.com/wongsyrone/lede-1/trunk/package/network/config/firewall4 package/network/config/firewall4
 
-svn export https://github.com/wongsyrone/lede-1/trunk/package/external/nft-fullcone package/deng/nft-fullcone
-svn export https://github.com/wongsyrone/lede-1/trunk/package/external/sfe package/deng/sfe
+#svn export https://github.com/wongsyrone/lede-1/trunk/package/external/nft-fullcone package/deng/nft-fullcone
+#svn export https://github.com/wongsyrone/lede-1/trunk/package/external/sfe package/deng/sfe
 
 
 # 其他调整
@@ -101,4 +101,4 @@ sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-ddns/Makefile
 
 
 # 临时调整
-sed -ri 's#9625784cf2e4fd9842f1d407681ce4878b5b0dcddbcd31c6135114a30c71e6a8#5de8c8e29aaa3fb9cc6b47bb27299f271354ebb72514e3accadc7d38b5bbaa72#' ./feeds/packages/utils/jq/Makefile
+#sed -ri 's#9625784cf2e4fd9842f1d407681ce4878b5b0dcddbcd31c6135114a30c71e6a8#5de8c8e29aaa3fb9cc6b47bb27299f271354ebb72514e3accadc7d38b5bbaa72#' ./feeds/packages/utils/jq/Makefile
