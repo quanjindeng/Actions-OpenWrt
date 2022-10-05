@@ -22,18 +22,25 @@ sed -i 's/192.168.1.1/10.10.10.1/g' package/base-files/files/bin/config_generate
 sed -i 's/invalid users = root/#invalid users = root/g' feeds/packages/net/samba4/files/smb.conf.template
 
 
+
+# 删除重复包
+
+rm -rf feeds/luci/applications/luci-app-upnp
+
+
+
 # 拉取软件包
 
 git clone --depth 1 https://github.com/rufengsuixing/luci-app-adguardhome package/deng/luci-app-adguardhome
 git clone --depth 1 https://github.com/AdguardTeam/AdGuardHome package/deng/adguardhome
 git clone --depth 1 https://github.com/sbwml/openwrt-alist package/deng/alist
-svn export https://github.com/messense/aliyundrive-webdav/trunk/openwrt ackage/deng/luci-aliyundrive-webdav
+svn export https://github.com/messense/aliyundrive-webdav/trunk/openwrt package/deng/luci-aliyundrive-webdav
 git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config package/deng/luci-app-argon-config
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon package/deng/luci-theme-argon
-svn export https://github.com/mingxiaoyu/luci-app-cloudflarespeedtest/trunk/applications/luci-app-cloudflarespeedtest ackage/deng/luci-app-cloudflarespeedtest
+svn export https://github.com/mingxiaoyu/luci-app-cloudflarespeedtest/trunk/applications/luci-app-cloudflarespeedtest package/deng/luci-app-cloudflarespeedtest
 git clone --depth 1 https://github.com/sensec/ddns-scripts_aliyun package/deng/ddns-scripts_aliyun
 svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-diskman package/deng/luci-app-diskman
-svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-fileassistant ackage/deng/luci-app-fileassistant
+svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-fileassistant package/deng/luci-app-fileassistant
 git clone --depth 1 https://github.com/jerrykuku/luci-app-go-aliyundrive-webdav package/deng/luci-app-go-aliyundrive-webdav
 git clone --depth 1 https://github.com/jerrykuku/go-aliyundrive-webdav package/deng/go-aliyundrive-webdav
 git clone --depth 1 https://github.com/sirpdboy/luci-app-netdata package/deng/luci-app-netdata
@@ -52,13 +59,11 @@ git clone --depth 1 https://github.com/tty228/luci-app-serverchan package/deng/l
 git clone --depth 1 https://github.com/ZeaKyX/luci-app-speedtest-web package/deng/luci-app-speedtest-web
 git clone --depth 1 https://github.com/ZeaKyX/speedtest-web package/deng/speedtest-web
 svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-turboacc package/deng/luci-app-turboacc
+svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-upnp package/deng/luci-app-upnp
 svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-vsftpd package/deng/luci-app-vsftpd
 svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/vsftpd-alt package/deng/vsftpd-alt
 svn export https://github.com/sundaqiang/openwrt-packages/trunk/luci-app-wolplus package/deng/luci-app-wolplus
 git clone --depth 1 https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic package/deng/luci-app-unblockneteasemusic
-
-
-# 删除重复包
 
 
 
@@ -68,6 +73,7 @@ sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-openvpn-server/M
 sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-qbittorrent/Makefile
 sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-vsftpd/Makefile
 sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-turboacc/Makefile
+sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-upnp/Makefile
 
 NAME=$"package/deng/luci-app-unblockneteasemusic/root/usr/share/unblockneteasemusic" && mkdir -p $NAME/core
 curl 'https://api.github.com/repos/UnblockNeteaseMusic/server/commits?sha=enhanced&path=precompiled' -o commits.json
@@ -77,6 +83,8 @@ curl -L https://github.com/UnblockNeteaseMusic/server/raw/enhanced/precompiled/b
 curl -L https://github.com/UnblockNeteaseMusic/server/raw/enhanced/ca.crt -o $NAME/core/ca.crt
 curl -L https://github.com/UnblockNeteaseMusic/server/raw/enhanced/server.crt -o $NAME/core/server.crt
 curl -L https://github.com/UnblockNeteaseMusic/server/raw/enhanced/server.key -o $NAME/core/server.key
+
+
 
 # 临时调整
 sed -ri 's#9625784cf2e4fd9842f1d407681ce4878b5b0dcddbcd31c6135114a30c71e6a8#5de8c8e29aaa3fb9cc6b47bb27299f271354ebb72514e3accadc7d38b5bbaa72#' ./feeds/packages/utils/jq/Makefile
