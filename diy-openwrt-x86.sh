@@ -29,6 +29,11 @@ rm -rf package/feeds/luci/applications/luci-app-ddns
 rm -rf feeds/luci/applications/luci-app-ddns
 rm -rf package/feeds/packages/ddns-scripts
 rm -rf feeds/packages/net/ddns-scripts
+rm -rf package/feeds/luci/applications/luci-app-upnp
+rm -rf feeds/luci/applications/luci-app-upnp
+rm -rf package/feeds/packages/miniupnpd
+rm -rf feeds/packages/net/miniupnpd
+
 
 # 拉取软件包
 
@@ -67,6 +72,8 @@ svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-vsft
 svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/vsftpd-alt package/deng/vsftpd-alt
 svn export https://github.com/sundaqiang/openwrt-packages/trunk/luci-app-wolplus package/deng/luci-app-wolplus
 git clone --depth 1 https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic package/deng/luci-app-unblockneteasemusic
+svn export https://github.com/coolsnowwolf/packages/trunk/net/miniupnpd package/deng/miniupnpd
+svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-upnp package/deng/luci-app-upnp
 
 
 # Add Fullcone NAT
@@ -90,6 +97,7 @@ sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-qbittorrent/Make
 sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-vsftpd/Makefile
 sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-diskman/Makefile
 sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-ddns/Makefile
+sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-upnp/Makefile
 
 NAME=$"package/deng/luci-app-unblockneteasemusic/root/usr/share/unblockneteasemusic" && mkdir -p $NAME/core
 curl 'https://api.github.com/repos/UnblockNeteaseMusic/server/commits?sha=enhanced&path=precompiled' -o commits.json
