@@ -33,8 +33,7 @@ sed -i 's/192.168.1.1/10.10.10.2/g' package/base-files/files/bin/config_generate
 sed -i 's/invalid users = root/#invalid users = root/g' feeds/packages/net/samba4/files/smb.conf.template
 
 # 更改内核版本
-
-sed -i 's#^.*KERNEL_PATCHVER:=.*$#KERNEL_PATCHVER:=5.4#' target/linux/x86/Makefile
+# sed -i 's#^.*KERNEL_PATCHVER:=.*$#KERNEL_PATCHVER:=5.4#' target/linux/x86/Makefile
 
 
 # 拉取软件包
