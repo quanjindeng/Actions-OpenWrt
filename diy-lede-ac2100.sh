@@ -24,8 +24,8 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' ./feeds/luci/collections/luci
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 10.10.10.5）
 sed -i 's/192.168.1.1/10.10.10.5/g' package/base-files/files/bin/config_generate
 
-# Modify system hostname（FROM OpenWrt CHANGE TO OpenWrt-RM2100）
-# sed -i 's/OpenWrt/OpenWrt-RM2100/g' package/base-files/files/bin/config_generate
+# Modify system hostname（FROM OpenWrt CHANGE TO OpenWrt-AC2100）
+# sed -i 's/OpenWrt/OpenWrt-AC2100/g' package/base-files/files/bin/config_generate
 
 # Replace the default software source
 # sed -i 's#openwrt.proxy.ustclug.org#mirrors.bfsu.edu.cn\\/openwrt#' package/lean/default-settings/files/zzz-default-settings
