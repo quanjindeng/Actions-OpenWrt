@@ -5098,7 +5098,7 @@ CONFIG_PACKAGE_luci-app-frpc=y
 CONFIG_PACKAGE_luci-app-gowebdav=y
 # CONFIG_PACKAGE_luci-app-gpsysupgrade is not set
 # CONFIG_PACKAGE_luci-app-guest-wifi is not set
-CONFIG_PACKAGE_luci-app-haproxy-tcp=y
+# CONFIG_PACKAGE_luci-app-haproxy-tcp is not set
 CONFIG_PACKAGE_luci-app-hd-idle=y
 # CONFIG_PACKAGE_luci-app-heimdall is not set
 # CONFIG_PACKAGE_luci-app-hnet is not set
@@ -5533,7 +5533,6 @@ CONFIG_PACKAGE_luci-i18n-firewall-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-frpc-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-gowebdav-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-gowebdav-zh_Hans is not set
-CONFIG_PACKAGE_luci-i18n-haproxy-tcp-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-hd-idle-ca is not set
 # CONFIG_PACKAGE_luci-i18n-hd-idle-cs is not set
 # CONFIG_PACKAGE_luci-i18n-hd-idle-de is not set
