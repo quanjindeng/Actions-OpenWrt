@@ -70,3 +70,9 @@ sed -i 's#mount -t cifs#mount.cifs#g' feeds/luci/applications/luci-app-cifs-moun
 # 为alist插件更换最新的golang版本
 rm -rf feeds/packages/lang/golang
 svn export https://github.com/sbwml/packages_lang_golang/trunk feeds/packages/lang/golang
+
+# mosdns
+find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
+find ./ | grep Makefile | grep mosdns | xargs rm -f
+git clone https://github.com/sbwml/luci-app-mosdns package/mosdns
+git clone https://github.com/sbwml/v2ray-geodata package/geodata
