@@ -1,7 +1,9 @@
 # Actions-OpenWrt
 Actions云编译，一键生成OpenWrt固件。
 
+- 默认ip：10.10.10.1
 
+- 默认密码：password
 
 ## 感谢
 - [OpenWrt 官方源码仓库](https://github.com/openwrt/openwrt)
