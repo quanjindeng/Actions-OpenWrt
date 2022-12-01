@@ -37,6 +37,8 @@ svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-unblocknetease
 
 # 删除重复包
 
+rm -rf package/feeds/packages/naiveproxy
+rm -rf feeds/packages/net/naiveproxy
 # rm -rf feeds/luci/applications/luci-app-netdata
 rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf package/small-package/luci-app-openvpn-server
@@ -66,5 +68,5 @@ sed -i 's#mount -t cifs#mount.cifs#g' feeds/luci/applications/luci-app-cifs-moun
 #sed -i 's#<%+cbi/tabmenu%>##g' package/small-packages/luci-app-nginx-manager/luasrc/view/nginx-manager/index.htm
 
 # 为alist插件更换最新的golang版本
-# rm -rf feeds/packages/lang/golang
-# svn export https://github.com/sbwml/packages_lang_golang/trunk feeds/packages/lang/golang
+rm -rf feeds/packages/lang/golang
+svn export https://github.com/sbwml/packages_lang_golang/trunk feeds/packages/lang/golang
