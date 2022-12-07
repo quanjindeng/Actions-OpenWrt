@@ -51,7 +51,7 @@ rm -rf package/small-package/luci-app-argon*
 rm -rf package/small-package/luci-theme-argon*
 # rm -rf package/small-package/luci-app-amlogic
 rm -rf package/small-package/luci-app-unblockneteasemusic
-
+rm -rf feeds/luci/applications/luci-app-passwall
 
 # 其他调整
 NAME=$"package/luci-app-unblockneteasemusic/root/usr/share/unblockneteasemusic" && mkdir -p $NAME/core
