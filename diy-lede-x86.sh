@@ -33,7 +33,7 @@ sed -i 's/192.168.1.1/10.10.10.1/g' package/base-files/files/bin/config_generate
 sed -i 's/invalid users = root/#invalid users = root/g' feeds/packages/net/samba4/files/smb.conf.template
 
 # 更改内核版本
-sed -i 's#^.*KERNEL_PATCHVER:=.*$#KERNEL_PATCHVER:=5.4#' target/linux/x86/Makefile
+# sed -i 's#^.*KERNEL_PATCHVER:=.*$#KERNEL_PATCHVER:=5.4#' target/linux/x86/Makefile
 
 
 # 拉取软件包
@@ -47,11 +47,15 @@ git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luc
 git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
 svn co https://github.com/kiddin9/openwrt-packages/trunk/UnblockNeteaseMusic-Go package/UnblockNeteaseMusic-Go
 svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-unblockneteasemusic-go package/luci-app-unblockneteasemusic-go
+git clone https://github.com/sirpdboy/luci-app-netdata package/sirpdboy/luci-app-netdata
+git clone https://github.com/sirpdboy/luci-app-parentcontrol package/sirpdboy/luci-app-parentcontrol
+git clone https://github.com/sirpdboy/netspeedtest.git package/sirpdboy/netspeedtest
 
 
 # 删除重复包
 
-# rm -rf feeds/luci/applications/luci-app-netdata
+rm -rf feeds/luci/applications/luci-app-netdata
+rm -rf package/small-package/luci-app-netdata
 rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf package/small-package/luci-app-openvpn-server
 rm -rf package/small-package/openvpn-easy-rsa-whisky
@@ -63,7 +67,7 @@ rm -rf package/small-package/luci-app-argon*
 rm -rf package/small-package/luci-theme-argon*
 # rm -rf package/small-package/luci-app-amlogic
 rm -rf package/small-package/luci-app-unblockneteasemusic
-
+rm -rf package/small-package/luci-app-netspeedtest
 
 # 其他调整
 NAME=$"package/luci-app-unblockneteasemusic/root/usr/share/unblockneteasemusic" && mkdir -p $NAME/core
