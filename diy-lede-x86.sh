@@ -47,14 +47,14 @@ git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luc
 git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
 svn co https://github.com/kiddin9/openwrt-packages/trunk/UnblockNeteaseMusic-Go package/UnblockNeteaseMusic-Go
 svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-unblockneteasemusic-go package/luci-app-unblockneteasemusic-go
-git clone https://github.com/sirpdboy/luci-app-netdata package/sirpdboy/luci-app-netdata
+# git clone https://github.com/sirpdboy/luci-app-netdata package/sirpdboy/luci-app-netdata
 git clone https://github.com/sirpdboy/luci-app-parentcontrol package/sirpdboy/luci-app-parentcontrol
 git clone https://github.com/sirpdboy/netspeedtest.git package/sirpdboy/netspeedtest
 
 
 # 删除重复包
 
-rm -rf feeds/luci/applications/luci-app-netdata
+# rm -rf feeds/luci/applications/luci-app-netdata
 rm -rf package/small-package/luci-app-netdata
 rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf package/small-package/luci-app-openvpn-server
