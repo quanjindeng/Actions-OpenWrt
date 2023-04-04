@@ -70,6 +70,8 @@ rm -rf package/small-package/luci-theme-argon*
 # rm -rf package/small-package/luci-app-amlogic
 rm -rf package/small-package/luci-app-unblockneteasemusic
 rm -rf package/small-package/luci-app-netspeedtest
+rm -rf package/small-package/upx-static
+rm -rf package/small-package/upx
 
 # 其他调整
 NAME=$"package/diy/luci-app-unblockneteasemusic/root/usr/share/unblockneteasemusic" && mkdir -p $NAME/core
