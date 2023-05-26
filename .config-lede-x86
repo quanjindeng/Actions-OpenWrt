@@ -9,6 +9,7 @@ CONFIG_ASTERISK_LIBXSLT_SUPPORT=y
 CONFIG_BIND_ENABLE_DOH=y
 CONFIG_BTRFS_PROGS_ZSTD=y
 CONFIG_BUILD_PATENTED=y
+CONFIG_CGROUPFS_MOUNT_KERNEL_CGROUPS=y
 CONFIG_COREMARK_NUMBER_OF_THREADS=32
 CONFIG_DOCKER_CGROUP_OPTIONS=y
 CONFIG_DOCKER_NET_ENCRYPT=y
@@ -67,7 +68,6 @@ CONFIG_OPENVPN_openssl_ENABLE_PF=y
 CONFIG_OPENVPN_openssl_ENABLE_PORT_SHARE=y
 CONFIG_OPENVPN_openssl_ENABLE_SMALL=y
 CONFIG_PACKAGE_6in4=y
-CONFIG_PACKAGE_SAMBA_MAX_DEBUG_LEVEL=-1
 CONFIG_PACKAGE_TAR_BZIP2=y
 CONFIG_PACKAGE_TAR_GZIP=y
 CONFIG_PACKAGE_TAR_XZ=y
@@ -83,7 +83,6 @@ CONFIG_PACKAGE_ariang=y
 CONFIG_PACKAGE_arptables=y
 CONFIG_PACKAGE_asterisk=y
 # CONFIG_PACKAGE_autosamba is not set
-# CONFIG_PACKAGE_avahi-dbus-daemon is not set
 CONFIG_PACKAGE_badblocks=y
 CONFIG_PACKAGE_bash=y
 CONFIG_PACKAGE_bind-client=y
@@ -143,6 +142,7 @@ CONFIG_PACKAGE_hd-idle=y
 CONFIG_PACKAGE_hdparm=y
 CONFIG_PACKAGE_hfsfsck=y
 CONFIG_PACKAGE_homebox=y
+CONFIG_PACKAGE_hysteria=y
 CONFIG_PACKAGE_ip6tables=y
 CONFIG_PACKAGE_ip6tables-mod-nat=y
 CONFIG_PACKAGE_ipt2socks=y
@@ -194,6 +194,7 @@ CONFIG_PACKAGE_ipv6helper=y
 CONFIG_PACKAGE_jansson=y
 CONFIG_PACKAGE_jq=y
 CONFIG_PACKAGE_kmod-arptables=y
+CONFIG_PACKAGE_kmod-asn1-encoder=y
 CONFIG_PACKAGE_kmod-br-netfilter=y
 CONFIG_PACKAGE_kmod-cdrom=y
 CONFIG_PACKAGE_kmod-crypto-ccm=y
@@ -223,9 +224,9 @@ CONFIG_PACKAGE_kmod-fs-exportfs=y
 CONFIG_PACKAGE_kmod-fs-hfs=y
 CONFIG_PACKAGE_kmod-fs-hfsplus=y
 CONFIG_PACKAGE_kmod-fs-msdos=y
-CONFIG_PACKAGE_kmod-fs-nfs-common=y
-CONFIG_PACKAGE_kmod-fs-nfs-common-rpcsec=y
-CONFIG_PACKAGE_kmod-fs-nfsd=y
+# CONFIG_PACKAGE_kmod-fs-nfs-common is not set
+# CONFIG_PACKAGE_kmod-fs-nfs-common-rpcsec is not set
+# CONFIG_PACKAGE_kmod-fs-nfsd  is not set
 CONFIG_PACKAGE_kmod-fs-reiserfs=y
 CONFIG_PACKAGE_kmod-fs-squashfs=y
 CONFIG_PACKAGE_kmod-fs-xfs=y
@@ -337,8 +338,6 @@ CONFIG_PACKAGE_less=y
 CONFIG_PACKAGE_libacl=y
 CONFIG_PACKAGE_libaio=y
 CONFIG_PACKAGE_libarchive=y
-# CONFIG_PACKAGE_libavahi-client is not set
-# CONFIG_PACKAGE_libavahi-dbus-support is not set
 CONFIG_PACKAGE_libbfd=y
 CONFIG_PACKAGE_libbz2=y
 CONFIG_PACKAGE_libcap-bin=y
@@ -441,7 +440,6 @@ CONFIG_PACKAGE_luci-app-onliner=y
 CONFIG_PACKAGE_luci-app-openvpn-server=y
 CONFIG_PACKAGE_luci-app-parentcontrol=y
 CONFIG_PACKAGE_luci-app-passwall=y
-CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ChinaDNS_NG=y
 CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Hysteria=y
 # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR_Libev_Client is not set
 # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Libev_Client is not set
@@ -454,8 +452,6 @@ CONFIG_PACKAGE_luci-app-passwall_Iptables_Transparent_Proxy=y
 CONFIG_PACKAGE_luci-app-poweroff=y
 CONFIG_PACKAGE_luci-app-pushbot=y
 CONFIG_PACKAGE_luci-app-qbittorrent=y
-CONFIG_PACKAGE_luci-app-samba4=y
-# CONFIG_PACKAGE_luci-app-samba is not set
 CONFIG_PACKAGE_luci-app-serverchan=y
 CONFIG_PACKAGE_luci-app-socat=y
 CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Redsocks2=y
@@ -505,7 +501,6 @@ CONFIG_PACKAGE_luci-i18n-parentcontrol-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-passwall-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-poweroff-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-qbittorrent-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-samba4-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-socat-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-uhttpd-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-wolplus-zh-cn=y
@@ -631,9 +626,6 @@ CONFIG_PACKAGE_ruby-stringio=y
 CONFIG_PACKAGE_ruby-strscan=y
 CONFIG_PACKAGE_ruby-yaml=y
 CONFIG_PACKAGE_runc=y
-# CONFIG_PACKAGE_samba36-server is not set
-CONFIG_PACKAGE_samba4-libs=y
-CONFIG_PACKAGE_samba4-server=y
 CONFIG_PACKAGE_script-utils=y
 CONFIG_PACKAGE_sed=y
 # CONFIG_PACKAGE_shadowsocks-libev-ss-local is not set
@@ -728,6 +720,7 @@ CONFIG_MBEDTLS_ECP_DP_SECP384R1_ENABLED=y
 # CONFIG_MBEDTLS_ECP_DP_SECP521R1_ENABLED is not set
 CONFIG_MBEDTLS_ENTROPY_FORCE_SHA256=y
 CONFIG_MBEDTLS_GCM_C=y
+CONFIG_MBEDTLS_HAVE_SSE2=y
 # CONFIG_MBEDTLS_HKDF_C is not set
 # CONFIG_MBEDTLS_KEY_EXCHANGE_DHE_PSK_ENABLED is not set
 # CONFIG_MBEDTLS_KEY_EXCHANGE_DHE_RSA_ENABLED is not set
@@ -750,9 +743,12 @@ CONFIG_MBEDTLS_RSA_NO_CRT=y
 # CONFIG_MBEDTLS_VERSION_FEATURES is not set
 # CONFIG_MBEDTLS_XTEA_C is not set
 CONFIG_PACKAGE_attr=y
+CONFIG_PACKAGE_avahi-dbus-daemon=y
 CONFIG_PACKAGE_dbus=y
 CONFIG_PACKAGE_iptables-mod-ipsec=y
 CONFIG_PACKAGE_kmod-ipt-ipsec=y
+CONFIG_PACKAGE_libavahi-client=y
+CONFIG_PACKAGE_libavahi-dbus-support=y
 CONFIG_PACKAGE_libdaemon=y
 CONFIG_PACKAGE_libdbus=y
 CONFIG_PACKAGE_libmbedtls=y
@@ -761,4 +757,38 @@ CONFIG_PACKAGE_libnatpmp=y
 CONFIG_PACKAGE_libtasn1=y
 CONFIG_PACKAGE_libtirpc=y
 CONFIG_PACKAGE_liburing=y
+CONFIG_PACKAGE_luci-app-samba4=y
+# CONFIG_PACKAGE_luci-i18n-samba4-ca is not set
+# CONFIG_PACKAGE_luci-i18n-samba4-cs is not set
+# CONFIG_PACKAGE_luci-i18n-samba4-de is not set
+# CONFIG_PACKAGE_luci-i18n-samba4-el is not set
+# CONFIG_PACKAGE_luci-i18n-samba4-en is not set
+# CONFIG_PACKAGE_luci-i18n-samba4-es is not set
+# CONFIG_PACKAGE_luci-i18n-samba4-fr is not set
+# CONFIG_PACKAGE_luci-i18n-samba4-he is not set
+# CONFIG_PACKAGE_luci-i18n-samba4-hu is not set
+# CONFIG_PACKAGE_luci-i18n-samba4-it is not set
+# CONFIG_PACKAGE_luci-i18n-samba4-ja is not set
+# CONFIG_PACKAGE_luci-i18n-samba4-ms is not set
+# CONFIG_PACKAGE_luci-i18n-samba4-no is not set
+# CONFIG_PACKAGE_luci-i18n-samba4-pl is not set
+# CONFIG_PACKAGE_luci-i18n-samba4-pt is not set
+# CONFIG_PACKAGE_luci-i18n-samba4-pt-br is not set
+# CONFIG_PACKAGE_luci-i18n-samba4-ro is not set
+# CONFIG_PACKAGE_luci-i18n-samba4-ru is not set
+# CONFIG_PACKAGE_luci-i18n-samba4-sk is not set
+# CONFIG_PACKAGE_luci-i18n-samba4-sv is not set
+# CONFIG_PACKAGE_luci-i18n-samba4-tr is not set
+# CONFIG_PACKAGE_luci-i18n-samba4-uk is not set
+# CONFIG_PACKAGE_luci-i18n-samba4-vi is not set
+CONFIG_PACKAGE_luci-i18n-samba4-zh-cn=y
+# CONFIG_PACKAGE_luci-i18n-samba4-zh-tw is not set
+CONFIG_PACKAGE_samba4-libs=y
+CONFIG_PACKAGE_samba4-server=y
 CONFIG_PACKAGE_wsdd2=y
+# CONFIG_SAMBA4_SERVER_AD_DC is not set
+CONFIG_SAMBA4_SERVER_AVAHI=y
+CONFIG_SAMBA4_SERVER_NETBIOS=y
+CONFIG_SAMBA4_SERVER_VFS=y
+# CONFIG_SAMBA4_SERVER_VFSX is not set
+CONFIG_SAMBA4_SERVER_WSDD2=y
