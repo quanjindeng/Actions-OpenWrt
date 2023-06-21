@@ -33,7 +33,7 @@ sed -i 's/192.168.1.1/10.10.10.1/g' package/base-files/files/bin/config_generate
 sed -i 's/invalid users = root/#invalid users = root/g' feeds/packages/net/samba4/files/smb.conf.template
 
 # 更改内核版本
-# sed -i 's#^.*KERNEL_PATCHVER:=.*$#KERNEL_PATCHVER:=5.15#' target/linux/x86/Makefile
+sed -i 's#^.*KERNEL_PATCHVER:=.*$#KERNEL_PATCHVER:=5.4#' target/linux/x86/Makefile
 
 # 修复部分插件自启动脚本丢失可执行权限问题
 sed -i '/exit 0/i\chmod +x /etc/init.d/*' package/lean/default-settings/files/zzz-default-settings
