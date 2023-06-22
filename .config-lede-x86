@@ -737,7 +737,7 @@ CONFIG_MBEDTLS_RSA_NO_CRT=y
 CONFIG_PACKAGE_attr=y
 CONFIG_PACKAGE_avahi-dbus-daemon=y
 CONFIG_PACKAGE_dbus=y
-# CONFIG_PACKAGE_ipt2socks is not set
+CONFIG_PACKAGE_ipt2socks=y
 CONFIG_PACKAGE_iptables-mod-ipsec=y
 CONFIG_PACKAGE_kmod-ipt-ipsec=y
 CONFIG_PACKAGE_libavahi-client=y
