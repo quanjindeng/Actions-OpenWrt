@@ -99,6 +99,3 @@ find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
 find ./ | grep Makefile | grep mosdns | xargs rm -f
 git clone https://github.com/sbwml/luci-app-mosdns package/diy/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/diy/geodata
-
-# 临时添加
-git clone https://github.com/sirpdboy/luci-app-ddns-go package/diy/luci-app-ddns-go
