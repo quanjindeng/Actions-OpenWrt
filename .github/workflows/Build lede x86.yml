@@ -7,6 +7,8 @@
 # https://github.com/P3TERX/Actions-OpenWrt
 # Description: Build OpenWrt using GitHub Actions
 #
+# 优化调整 by https://github.com/quanjindeng/Actions_OpenWrt-Amlogic
+#
 
 name: Build lede x86
 
@@ -34,6 +36,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: 创建编译空间挂载点
+      run: |
+        sudo mkdir -p /workdir
+        sudo chown $USER:$GROUPS /workdir
+        
+    - name: 最大化编译空间
+      uses: easimon/maximize-build-space@master
+      with:
+        root-reserve-mb: 2048
+        swap-size-mb: 1024
+        build-mount-path: /workdir
+        overprovision-lvm: 'true'
+        remove-dotnet: 'true'
+        remove-android: 'true'
+        remove-haskell: 'true'
+        remove-codeql: 'true'
+        remove-docker-images: 'true'
+
     - name: Checkout
       uses: actions/checkout@v3
 
@@ -59,7 +79,6 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
         sudo apt update -y
         sudo apt full-upgrade -y
         sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \
@@ -72,8 +91,6 @@ jobs:
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
         sudo timedatectl set-timezone "$TZ"
-        sudo mkdir -p /workdir
-        sudo chown $USER:$GROUPS /workdir
         
     - name: 克隆源码
       working-directory: /workdir
