@@ -787,3 +787,5 @@ CONFIG_SAMBA4_SERVER_NETBIOS=y
 CONFIG_SAMBA4_SERVER_VFS=y
 # CONFIG_SAMBA4_SERVER_VFSX is not set
 CONFIG_SAMBA4_SERVER_WSDD2=y
+luci-app-unblockneteasemusic=y
+# luci-app-unblockmusic is not set
