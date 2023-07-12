@@ -52,6 +52,7 @@ svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-unblocknetease
 # git clone https://github.com/sirpdboy/luci-app-netdata package/diy/luci-app-netdata
 git clone https://github.com/sirpdboy/luci-app-parentcontrol package/diy/luci-app-parentcontrol
 git clone https://github.com/sirpdboy/netspeedtest.git package/diy/netspeedtest
+git clone https://github.com/gngpp/luci-app-watchcat-plus.git package/diy/luci-app-watchcat-plus
 
 
 # 删除重复包
