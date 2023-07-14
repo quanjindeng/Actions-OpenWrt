@@ -6,7 +6,6 @@ git clone --depth 1 https://github.com/UnblockNeteaseMusic/luci-app-unblocknetea
 git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/deng/netspeedtest
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall package/deng/passwall
 git clone --depth 1 -b luci https://github.com/xiaorouji/openwrt-passwall package/deng/luci-app-passwall
-git clone --depth 1 https://github.com/kiddin9/luci-app-dnsfilter package/deng/luci-app-dnsfilter
 svn export https://github.com/messense/aliyundrive-webdav/trunk/openwrt package/deng/aliyundrive-webdav
 git clone --depth 1 https://github.com/sbwml/luci-app-alist package/deng/luci-app-alist
 git clone --depth 1 https://github.com/kenzok78/luci-app-adguardhome package/deng/luci-app-adguardhome
