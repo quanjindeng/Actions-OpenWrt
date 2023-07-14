@@ -14,7 +14,7 @@ git clone --depth 1 https://github.com/zzsj0928/luci-app-pushbot package/deng/lu
 git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go package/deng/luci-app-ddns-go
 svn export https://github.com/sundaqiang/openwrt-packages/trunk/luci-app-wolplus package/deng/luci-app-wolplus
 svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-diskman package/deng/luci-app-diskman
-git clone --depth 1 https://github.com/sirpdboy/luci-app-netdata package/deng/luci-app-netdata
+git clone --depth 1 https://github.com/Jason6111/luci-app-netdata package/deng/luci-app-netdata
 git clone --depth 1 https://github.com/esirplayground/luci-app-poweroff package/deng/luci-app-poweroff
 svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-qbittorrent package/deng/luci-app-qbittorrent
 svn export https://github.com/coolsnowwolf/packages/trunk/net/qBittorrent-static package/deng/qBittorrent-static
