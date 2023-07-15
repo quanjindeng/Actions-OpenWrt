@@ -24,8 +24,8 @@ svn export https://github.com/coolsnowwolf/packages/trunk/libs/rblibtorrent pack
 svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-vsftpd package/deng/luci-app-vsftpd
 svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/vsftpd-alt package/deng/vsftpd-alt
 git clone --depth 1 https://github.com/tty228/luci-app-wechatpush.git package/deng/luci-app-wechatpush
-svn export https://github.com/NueXini/NueXini_Packages/trunk/luci-app-webdav package/deng/luci-app-webdav
-svn export https://github.com/NueXini/NueXini_Packages/trunk/gowebdav package/deng/gowebdav
+svn export https://github.com/immortalwrt/luci/trunk/applications/luci-app-gowebdav package/deng/luci-app-gowebdav
+svn export https://github.com/immortalwrt/packages/trunk/net/gowebdav package/deng/gowebdav
 
 
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 10.10.10.1）
@@ -37,6 +37,7 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' ./feeds/luci/collections/luci
 sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-qbittorrent/Makefile
 sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-vsftpd/Makefile
 sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-diskman/Makefile
+sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-gowebdav/Makefile
 
 NAME=$"package/deng/luci-app-unblockneteasemusic/root/usr/share/unblockneteasemusic" && mkdir -p $NAME/core
 curl 'https://api.github.com/repos/UnblockNeteaseMusic/server/commits?sha=enhanced&path=precompiled' -o commits.json
