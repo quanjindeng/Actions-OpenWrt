@@ -4,8 +4,7 @@ git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git packa
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/deng/luci-theme-argon
 git clone --depth 1 https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/deng/luci-app-unblockneteasemusic
 git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/deng/netspeedtest
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall package/deng/passwall
-git clone --depth 1 luci https://github.com/xiaorouji/openwrt-passwall package/deng/luci-app-passwall
+git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall package/deng/luci-app-passwall
 svn export https://github.com/messense/aliyundrive-webdav/trunk/openwrt package/deng/aliyundrive-webdav
 git clone --depth 1 https://github.com/sbwml/luci-app-alist package/deng/luci-app-alist
 git clone --depth 1 https://github.com/kenzok78/luci-app-adguardhome package/deng/luci-app-adguardhome
