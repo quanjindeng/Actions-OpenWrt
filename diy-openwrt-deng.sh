@@ -7,6 +7,7 @@ git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/de
 git clone --depth 1 https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/deng/luci-app-unblockneteasemusic
 git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/deng/netspeedtest
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall package/deng/luci-app-passwall
+git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2 package/deng/luci-app-passwall2
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/deng/passwall-packages
 svn export https://github.com/messense/aliyundrive-webdav/trunk/openwrt package/deng/aliyundrive-webdav
 git clone --depth 1 https://github.com/sbwml/luci-app-alist package/deng/luci-app-alist
@@ -29,7 +30,7 @@ git clone --depth 1 https://github.com/tty228/luci-app-wechatpush.git package/de
 svn export https://github.com/immortalwrt/luci/trunk/applications/luci-app-gowebdav package/deng/luci-app-gowebdav
 svn export https://github.com/immortalwrt/packages/trunk/net/gowebdav package/deng/gowebdav
 git clone --depth 1 https://github.com/lisaac/luci-app-dockerman package/deng/luci-app-dockerman
-git clone --depth 1 https://github.com/vernesong/OpenClash package/deng/luci-app-openclash
+# git clone --depth 1 https://github.com/vernesong/OpenClash package/deng/luci-app-openclash
 
 
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 10.10.10.1）
