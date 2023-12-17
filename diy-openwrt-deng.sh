@@ -30,8 +30,8 @@ git clone --depth 1 https://github.com/tty228/luci-app-wechatpush.git package/de
 svn export https://github.com/immortalwrt/luci/trunk/applications/luci-app-gowebdav package/deng/luci-app-gowebdav
 svn export https://github.com/immortalwrt/packages/trunk/net/gowebdav package/deng/gowebdav
 git clone --depth 1 https://github.com/lisaac/luci-app-dockerman package/deng/luci-app-dockerman
-# git clone --depth 1 https://github.com/vernesong/OpenClash package/deng/luci-app-openclash
-
+git clone --depth 1 https://github.com/vernesong/OpenClash package/deng/luci-app-openclash
+svn export https://github.com/kenzok8/small-package/trunk/wrtbwmon package/deng/wrtbwmon
 
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 10.10.10.1）
 sed -i 's/192.168.1.1/10.10.10.1/g' package/base-files/files/bin/config_generate
