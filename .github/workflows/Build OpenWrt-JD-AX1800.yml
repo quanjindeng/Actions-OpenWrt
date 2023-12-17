@@ -2,7 +2,7 @@
 # https://github.com/quanjindeng/Actions_OpenWrt
 #
 
-name: Build OpenWrt-deng
+name: Build OpenWrt-JD-AX1800
 
 on:
   repository_dispatch:
