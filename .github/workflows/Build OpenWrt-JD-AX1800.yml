@@ -17,10 +17,6 @@ env:
   CONFIG_FILE: .config-jd-ax1800
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-openwrt-deng.sh
-  UPLOAD_BIN_DIR: false
-  UPLOAD_FIRMWARE: true
-  UPLOAD_WETRANSFER: false
-  UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
 
 jobs:
@@ -136,16 +132,9 @@ jobs:
       if: (!cancelled())
       run: df -hT
 
-    - name: 上传bin文件夹
-      uses: actions/upload-artifact@v3
-      if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
-      with:
-        name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-        path: openwrt/bin
-
     - name: 整理文件
       id: organize
-      if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
+      if: (!cancelled())
       run: |
         cd openwrt/bin/targets/*/*
         rm -rf packages
@@ -156,14 +145,12 @@ jobs:
         # rm -rf *-rootfs.img
         # rm -rf *-rootfs.img.gz
         # rm -rf sha256sums
-        echo "FIRMWARE=$PWD" >> $GITHUB_ENV
-        echo "status=success" >> $GITHUB_OUTPUT
     
     - name: 发布固件
       uses: ncipollo/release-action@v1
       with:
         tag: openwrt_JD-AX1800_${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-        artifacts: ${{ env.FIRMWARE }}/*
+        artifacts: openwrt/bin/targets/*/*
         allowUpdates: true
         token: ${{ secrets.GITHUB_TOKEN }}
         body: |
