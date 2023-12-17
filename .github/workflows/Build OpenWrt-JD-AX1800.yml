@@ -150,7 +150,7 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         tag: openwrt_JD-AX1800_${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-        artifacts: openwrt/bin/targets/*/*
+        artifacts: openwrt/bin/targets/*/*/*
         allowUpdates: true
         token: ${{ secrets.GITHUB_TOKEN }}
         body: |
