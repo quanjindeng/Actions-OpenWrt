@@ -7,8 +7,8 @@ name: Build OpenWrt-JDC-AX1800
 on:
   repository_dispatch:
   workflow_dispatch:
- # schedule:
- #   - cron: 0 16 4,9,14,19,24,28,31 * *
+  schedule:
+    - cron: 0 16 4,9,14,19,24,28,31 * *
 
 env:
   REPO_URL: https://github.com/JiaY-shi/openwrt.git
@@ -149,7 +149,7 @@ jobs:
     - name: 发布固件
       uses: ncipollo/release-action@v1
       with:
-        tag: openwrt_JD-AX1800_${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        tag: openwrt_${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         artifacts: openwrt/bin/targets/*/*/*
         allowUpdates: true
         token: ${{ secrets.GITHUB_TOKEN }}
