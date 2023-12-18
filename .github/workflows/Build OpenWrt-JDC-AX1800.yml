@@ -149,17 +149,17 @@ jobs:
     - name: 发布固件
       uses: ncipollo/release-action@v1
       with:
-        tag: openwrt_${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        tag: openwrt${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         artifacts: openwrt/bin/targets/*/*/*
         allowUpdates: true
         token: ${{ secrets.GITHUB_TOKEN }}
         body: |
           京东云无线宝二代–亚瑟_JDC-AX1800 固件
-          默认管理地址：10.10.10.1
-          默认关闭无线，刷机后需手动设置开启
-          固件体积较大，首次刷入需先刷GPT大分区表
-          istore固件可用uboot直刷，建议先使用istore固件进行过渡
-          刷入大分区表后使用mkfs.ext4命令格式化27分区并挂载好，之后再把固件kernel和rootfs上传，ssh下使用dd命令分别刷入到16、18分区，重新通电红灯常亮即刷入完成
+          默认管理地址：10.10.10.1。
+          默认关闭无线，刷机后需手动设置开启。
+          固件体积较大，首次刷入需先刷GPT大分区表。
+          istore固件可用uboot直刷，建议先使用istore固件进行过渡。
+          刷入大分区表后使用mkfs.ext4命令格式化27分区并挂载好，之后再把固件kernel和rootfs上传，ssh下使用dd命令分别刷入到16、18分区，重新通电红灯常亮即刷入完成。
           
     - name: 清理Actions空间
       uses: Mattraks/delete-workflow-runs@main
