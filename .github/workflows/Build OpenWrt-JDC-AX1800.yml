@@ -2,7 +2,7 @@
 # https://github.com/quanjindeng/Actions_OpenWrt
 #
 
-name: Build OpenWrt-JD-AX1800
+name: Build OpenWrt-JDC-AX1800
 
 on:
   repository_dispatch:
@@ -14,7 +14,7 @@ env:
   REPO_URL: https://github.com/JiaY-shi/openwrt.git
   REPO_BRANCH: ipq60xx-devel_nss
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: .config-jd-ax1800
+  CONFIG_FILE: .config-jdc-ax1800
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-openwrt-deng.sh
   TZ: Asia/Shanghai
@@ -155,6 +155,11 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         body: |
           京东云无线宝二代–亚瑟_JDC-AX1800 固件
+          默认管理地址：10.10.10.1
+          默认关闭无线，刷机后需手动设置开启
+          固件体积较大，首次刷入需先刷GPT大分区表
+          istore固件可用uboot直刷，建议先使用istore固件进行过渡
+          刷入大分区表后使用mkfs.ext4命令格式化27分区并挂载好，之后再把固件kernel和rootfs上传，ssh下使用dd命令分别刷入到16、18分区，重新通电红灯常亮即刷入完成
           
     - name: 清理Actions空间
       uses: Mattraks/delete-workflow-runs@main
