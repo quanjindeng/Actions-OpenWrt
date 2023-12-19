@@ -15,7 +15,7 @@ git clone --depth 1 https://github.com/kenzok78/luci-app-adguardhome package/den
 git clone --depth 1 https://github.com/zzsj0928/luci-app-pushbot package/deng/luci-app-pushbot
 git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go package/deng/luci-app-ddns-go
 svn export https://github.com/sundaqiang/openwrt-packages/trunk/luci-app-wolplus package/deng/luci-app-wolplus
-svn export https://github.com/lisaac/luci-app-diskman/trunk/applications/luci-app-diskman package/deng/luci-app-diskman
+git clone --depth 1 https://github.com/lisaac/luci-app-diskman.git package/deng/luci-app-diskman
 git clone --depth 1 https://github.com/Jason6111/luci-app-netdata package/deng/luci-app-netdata
 git clone --depth 1 https://github.com/esirplayground/luci-app-poweroff package/deng/luci-app-poweroff
 svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-qbittorrent package/deng/luci-app-qbittorrent
@@ -41,7 +41,7 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' ./feeds/luci/collections/luci
 
 sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-qbittorrent/Makefile
 sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-vsftpd/Makefile
-sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-diskman/Makefile
+# sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-diskman/Makefile
 sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-gowebdav/Makefile
 sed -i 's#../../#$(TOPDIR)/feeds/packages/#g' package/deng/gowebdav/Makefile
 
