@@ -32,6 +32,9 @@ svn export https://github.com/immortalwrt/packages/trunk/net/gowebdav package/de
 git clone --depth 1 https://github.com/lisaac/luci-app-dockerman package/deng/luci-app-dockerman
 git clone --depth 1 https://github.com/vernesong/OpenClash package/deng/luci-app-openclash
 svn export https://github.com/kenzok8/small-package/trunk/wrtbwmon package/deng/wrtbwmon
+svn export https://github.com/kenzok8/small-package/trunk/dnsforwarder package/deng/dnsforwarder
+svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/autocore package/deng/autocore
+svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/shortcut-fe package/deng/shortcut-fe
 svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-cpufreq package/deng/luci-app-cpufreq
 svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-turboacc package/deng/luci-app-turboacc
 
