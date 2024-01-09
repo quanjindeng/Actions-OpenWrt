@@ -34,9 +34,9 @@ git clone --depth 1 https://github.com/vernesong/OpenClash package/deng/luci-app
 svn export https://github.com/kenzok8/small-package/trunk/wrtbwmon package/deng/wrtbwmon
 svn export https://github.com/kenzok8/small-package/trunk/dnsforwarder package/deng/dnsforwarder
 svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/autocore package/deng/autocore
-svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/shortcut-fe package/deng/shortcut-fe
+# svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/shortcut-fe package/deng/shortcut-fe
 svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-cpufreq package/deng/luci-app-cpufreq
-svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-turboacc package/deng/luci-app-turboacc
+# svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-turboacc package/deng/luci-app-turboacc
 
 
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 10.10.10.1）
@@ -51,7 +51,7 @@ sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-diskman/Makefile
 sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-gowebdav/Makefile
 sed -i 's#../../#$(TOPDIR)/feeds/packages/#g' package/deng/gowebdav/Makefile
 sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-cpufreq/Makefile
-sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-turboacc/Makefile
+# sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-turboacc/Makefile
 
 NAME=$"package/deng/luci-app-unblockneteasemusic/root/usr/share/unblockneteasemusic" && mkdir -p $NAME/core
 curl 'https://api.github.com/repos/UnblockNeteaseMusic/server/commits?sha=enhanced&path=precompiled' -o commits.json
