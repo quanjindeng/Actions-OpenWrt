@@ -9,34 +9,34 @@ git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/deng/ne
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall package/deng/luci-app-passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2 package/deng/luci-app-passwall2
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/deng/passwall-packages
-svn export https://github.com/messense/aliyundrive-webdav/trunk/openwrt package/deng/aliyundrive-webdav
+git archive --remote=https://github.com/messense/aliyundrive-webdav.git HEAD:openwrt tar -x -C package/deng/aliyundrive-webdav
 git clone --depth 1 https://github.com/sbwml/luci-app-alist package/deng/luci-app-alist
 git clone --depth 1 https://github.com/kenzok78/luci-app-adguardhome package/deng/luci-app-adguardhome
 git clone --depth 1 https://github.com/zzsj0928/luci-app-pushbot package/deng/luci-app-pushbot
 git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go package/deng/luci-app-ddns-go
-svn export https://github.com/sundaqiang/openwrt-packages/trunk/luci-app-wolplus package/deng/luci-app-wolplus
-svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-diskman package/deng/luci-app-diskman
+git archive --remote=https://github.com/sundaqiang/openwrt-packages.git HEAD:luci-app-wolplus tar -x -C package/deng/luci-app-wolplus
+git archive --remote=https://github.com/coolsnowwolf/luci.git HEAD:applications/luci-app-diskman tar -x -C package/deng/luci-app-diskman
 git clone --depth 1 https://github.com/Jason6111/luci-app-netdata package/deng/luci-app-netdata
 git clone --depth 1 https://github.com/esirplayground/luci-app-poweroff package/deng/luci-app-poweroff
-svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-qbittorrent package/deng/luci-app-qbittorrent
-svn export https://github.com/coolsnowwolf/packages/trunk/net/qBittorrent-static package/deng/qBittorrent-static
-svn export https://github.com/coolsnowwolf/packages/trunk/net/qBittorrent package/deng/qBittorrent
-svn export https://github.com/coolsnowwolf/packages/trunk/libs/qtbase package/deng/qtbase
-svn export https://github.com/coolsnowwolf/packages/trunk/libs/qttools package/deng/qttools
-svn export https://github.com/coolsnowwolf/packages/trunk/libs/rblibtorrent package/deng/rblibtorrent
-svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-vsftpd package/deng/luci-app-vsftpd
-svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/vsftpd-alt package/deng/vsftpd-alt
+git archive --remote=https://github.com/coolsnowwolf/luci.git HEAD:applications/luci-app-qbittorrent tar -x -C package/deng/luci-app-qbittorrent
+git archive --remote=https://github.com/coolsnowwolf/packages.git HEAD:net/qBittorrent-static tar -x -C package/deng/qBittorrent-static
+git archive --remote=https://github.com/coolsnowwolf/packages.git HEAD:net/qBittorrent tar -x -C package/deng/qBittorrent
+git archive --remote=https://github.com/coolsnowwolf/packages.git HEAD:libs/qtbase tar -x -C package/deng/qtbase
+git archive --remote=https://github.com/coolsnowwolf/packages.git HEAD:libs/qttools tar -x -C package/deng/qttools
+git archive --remote=https://github.com/coolsnowwolf/packages.git HEAD:libs/rblibtorrent tar -x -C package/deng/rblibtorrent
+git archive --remote=https://github.com/coolsnowwolf/luci.git HEAD:applications/luci-app-vsftpd tar -x -C package/deng/luci-app-vsftpd
+git archive --remote=https://github.com/coolsnowwolf/lede.git HEAD:package/lean/vsftpd-alt tar -x -C package/deng/vsftpd-alt
 git clone --depth 1 https://github.com/tty228/luci-app-wechatpush.git package/deng/luci-app-wechatpush
-svn export https://github.com/immortalwrt/luci/trunk/applications/luci-app-gowebdav package/deng/luci-app-gowebdav
-svn export https://github.com/immortalwrt/packages/trunk/net/gowebdav package/deng/gowebdav
+git archive --remote=https://github.com/immortalwrt/luci.git HEAD:applications/luci-app-gowebdav tar -x -C package/deng/luci-app-gowebdav
+git archive --remote=https://github.com/immortalwrt/packages.git HEAD:net/gowebdav tar -x -C package/deng/gowebdav
 git clone --depth 1 https://github.com/lisaac/luci-app-dockerman package/deng/luci-app-dockerman
 git clone --depth 1 https://github.com/vernesong/OpenClash package/deng/luci-app-openclash
-svn export https://github.com/kenzok8/small-package/trunk/wrtbwmon package/deng/wrtbwmon
-svn export https://github.com/kenzok8/small-package/trunk/dnsforwarder package/deng/dnsforwarder
-svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/autocore package/deng/autocore
-# svn export https://github.com/coolsnowwolf/lede/trunk/package/lean/shortcut-fe package/deng/shortcut-fe
-svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-cpufreq package/deng/luci-app-cpufreq
-# svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-turboacc package/deng/luci-app-turboacc
+git archive --remote=https://github.com/kenzok8/small-package.git HEAD:wrtbwmon tar -x -C package/deng/wrtbwmon
+git archive --remote=https://github.com/kenzok8/small-package.git HEAD:dnsforwarder tar -x -C package/deng/dnsforwarder
+git archive --remote=https://github.com/coolsnowwolf/lede.git HEAD:package/lean/autocore tar -x -C package/deng/autocore
+# git archive --remote=https://github.com/coolsnowwolf/lede.git HEAD:package/lean/shortcut-fe tar -x -C package/deng/shortcut-fe
+git archive --remote=https://github.com/coolsnowwolf/luci.git HEAD:applications/luci-app-cpufreq tar -x -C package/deng/luci-app-cpufreq
+# git archive --remote=https://github.com/coolsnowwolf/luci.git HEAD:applications/luci-app-turboacc tar -x -C package/deng/luci-app-turboacc
 
 
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 10.10.10.1）
