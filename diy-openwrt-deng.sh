@@ -18,6 +18,7 @@ git clone --depth 1 https://github.com/esirplayground/luci-app-poweroff package/
 git clone --depth 1 https://github.com/tty228/luci-app-wechatpush.git package/deng/luci-app-wechatpush
 git clone --depth 1 https://github.com/lisaac/luci-app-dockerman package/deng/luci-app-dockerman
 git clone --depth 1 https://github.com/vernesong/OpenClash package/deng/luci-app-openclash
+git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 
 git clone --depth 1 https://github.com/kenzok8/small-package deng-tmp1 && mv deng-tmp1/wrtbwmon package/deng/wrtbwmon && mv deng-tmp1/dnsforwarder package/deng/dnsforwarder
 git clone --depth 1 https://github.com/messense/aliyundrive-webdav deng-tmp2 && mv deng-tmp2/openwrt package/deng/aliyundrive-webdav
