@@ -20,7 +20,7 @@ git clone --depth 1 https://github.com/lisaac/luci-app-dockerman package/deng/lu
 git clone --depth 1 https://github.com/vernesong/OpenClash package/deng/luci-app-openclash
 git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 
-git clone --depth 1 https://github.com/kenzok8/small-package deng-tmp1 && mv deng-tmp1/wrtbwmon package/deng/wrtbwmon && mv deng-tmp1/dnsforwarder package/deng/dnsforwarder && mv deng-tmp1/luci-app-speedtest-web package/deng/luci-app-speedtest-web
+git clone --depth 1 https://github.com/kenzok8/small-package deng-tmp1 && mv deng-tmp1/wrtbwmon package/deng/wrtbwmon && mv deng-tmp1/dnsforwarder package/deng/dnsforwarder && mv deng-tmp1/luci-app-speedtest-web package/deng/luci-app-speedtest-web && mv deng-tmp1/speedtest-web package/deng/speedtest-web
 git clone --depth 1 https://github.com/messense/aliyundrive-webdav deng-tmp2 && mv deng-tmp2/openwrt package/deng/aliyundrive-webdav
 git clone --depth 1 https://github.com/sundaqiang/openwrt-packages deng-tmp3 && mv deng-tmp3/luci-app-wolplus package/deng/luci-app-wolplus
 git clone --depth 1 https://github.com/coolsnowwolf/lede deng-tmp4 && mv deng-tmp4/package/lean/autocore package/deng/autocore && mv deng-tmp4/package/lean/vsftpd-alt package/deng/vsftpd-alt
