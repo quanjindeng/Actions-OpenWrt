@@ -33,7 +33,7 @@ sed -i 's/192.168.1.1/10.10.10.1/g' package/base-files/files/bin/config_generate
 sed -i 's/invalid users = root/#invalid users = root/g' feeds/packages/net/samba4/files/smb.conf.template
 
 # 更改内核版本
-sed -i 's#^.*KERNEL_PATCHVER:=.*$#KERNEL_PATCHVER:=5.4#' target/linux/x86/Makefile
+# sed -i 's#^.*KERNEL_PATCHVER:=.*$#KERNEL_PATCHVER:=5.4#' target/linux/x86/Makefile
 
 # 修复部分插件自启动脚本丢失可执行权限问题
 sed -i '/exit 0/i\chmod +x /etc/init.d/*' package/lean/default-settings/files/zzz-default-settings
@@ -53,7 +53,8 @@ svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-unblocknetease
 git clone https://github.com/sirpdboy/luci-app-parentcontrol package/diy/luci-app-parentcontrol
 git clone https://github.com/sirpdboy/netspeedtest.git package/diy/netspeedtest
 git clone https://github.com/gngpp/luci-app-watchcat-plus.git package/diy/luci-app-watchcat-plus
-
+git clone --depth 1 https://github.com/immortalwrt/luci deng-tmp7 && mv deng-tmp7/applications/luci-app-dufs package/luci-app-dufs
+git clone --depth 1 https://github.com/immortalwrt/packages deng-tmp8 && mv deng-tmp8/net/dufs package/dufs
 
 # 删除重复包
 
@@ -100,3 +101,6 @@ find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
 find ./ | grep Makefile | grep mosdns | xargs rm -f
 git clone https://github.com/sbwml/luci-app-mosdns package/diy/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/diy/geodata
+
+sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/luci-app-dufs/Makefile
+sed -i 's#../../#$(TOPDIR)/feeds/packages/#g' package/dufs/Makefile
