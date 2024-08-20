@@ -21,7 +21,7 @@ git clone --depth 1 https://github.com/vernesong/OpenClash package/deng/luci-app
 # git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 
 git clone --depth 1 https://github.com/kenzok8/small-package deng-tmp1 && mv deng-tmp1/wrtbwmon package/deng/wrtbwmon && mv deng-tmp1/dnsforwarder package/deng/dnsforwarder
-git clone --depth 1 https://github.com/messense/aliyundrive-webdav deng-tmp2 && mv deng-tmp2/openwrt package/deng/aliyundrive-webdav
+# git clone --depth 1 https://github.com/messense/aliyundrive-webdav deng-tmp2 && mv deng-tmp2/openwrt package/deng/aliyundrive-webdav
 git clone --depth 1 https://github.com/sundaqiang/openwrt-packages deng-tmp3 && mv deng-tmp3/luci-app-wolplus package/deng/luci-app-wolplus
 git clone --depth 1 https://github.com/coolsnowwolf/lede deng-tmp4 && mv deng-tmp4/package/lean/autocore package/deng/autocore && mv deng-tmp4/package/lean/vsftpd-alt package/deng/vsftpd-alt
 git clone --depth 1 https://github.com/coolsnowwolf/luci deng-tmp5 && mv deng-tmp5/applications/luci-app-qbittorrent package/deng/luci-app-qbittorrent && mv deng-tmp5/applications/luci-app-vsftpd package/deng/luci-app-vsftpd && mv deng-tmp5/applications/luci-app-cpufreq package/deng/luci-app-cpufreq && mv deng-tmp5/applications/luci-app-diskman package/deng/luci-app-diskman
