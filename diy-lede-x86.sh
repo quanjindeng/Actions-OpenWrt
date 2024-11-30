@@ -47,22 +47,17 @@ git clone https://github.com/kenzok8/small-package package/small-package
 git clone https://github.com/jerrykuku/luci-app-argon-config.git package/diy/luci-app-argon-config
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/diy/luci-theme-argon
 git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/diy/luci-app-unblockneteasemusic
-svn co https://github.com/kiddin9/openwrt-packages/trunk/UnblockNeteaseMusic-Go package/diy/UnblockNeteaseMusic-Go
-svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-unblockneteasemusic-go package/diy/luci-app-unblockneteasemusic-go
+# svn co https://github.com/kiddin9/openwrt-packages/trunk/UnblockNeteaseMusic-Go package/diy/UnblockNeteaseMusic-Go
+# svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-unblockneteasemusic-go package/diy/luci-app-unblockneteasemusic-go
 # git clone https://github.com/sirpdboy/luci-app-netdata package/diy/luci-app-netdata
 git clone https://github.com/sirpdboy/luci-app-parentcontrol package/diy/luci-app-parentcontrol
 git clone https://github.com/sirpdboy/netspeedtest.git package/diy/netspeedtest
-git clone https://github.com/gngpp/luci-app-watchcat-plus.git package/diy/luci-app-watchcat-plus
 git clone --depth 1 https://github.com/immortalwrt/luci deng-tmp7 && mv deng-tmp7/applications/luci-app-dufs package/luci-app-dufs
 git clone --depth 1 https://github.com/immortalwrt/packages deng-tmp8 && mv deng-tmp8/net/dufs package/dufs
 
 # 删除重复包
 
 # rm -rf feeds/luci/applications/luci-app-netdata
-rm -rf package/small-package/luci-app-qbittorrent
-rm -rf package/small-package/qBittorrent-static
-rm -rf package/small-package/qBittorrent
-rm -rf package/small-package/nftables
 rm -rf package/small-package/luci-app-netdata
 rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf package/small-package/luci-app-openvpn-server
@@ -80,7 +75,6 @@ rm -rf package/small-package/upx-static
 rm -rf package/small-package/upx
 rm -rf package/small-package/firewall*
 rm -rf package/small-package/opkg
-rm -rf package/small-package/natflow
 
 # 其他调整
 NAME=$"package/diy/luci-app-unblockneteasemusic/root/usr/share/unblockneteasemusic" && mkdir -p $NAME/core
