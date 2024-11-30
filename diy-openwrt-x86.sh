@@ -74,7 +74,8 @@ svn export https://github.com/sundaqiang/openwrt-packages/trunk/luci-app-wolplus
 git clone --depth 1 https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic package/deng/luci-app-unblockneteasemusic
 svn export https://github.com/coolsnowwolf/packages/trunk/net/miniupnpd package/deng/miniupnpd
 svn export https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-upnp package/deng/luci-app-upnp
-
+git clone --depth 1 https://github.com/brvphoenix/luci-app-wrtbwmon package/deng/luci-app-wrtbwmon
+git clone --depth 1 https://github.com/brvphoenix/wrtbwmon package/deng/wrtbwmon
 
 # Add Fullcone NAT
 
