@@ -58,6 +58,7 @@ git clone --depth 1 https://github.com/tty228/luci-app-wechatpush.git package/de
 
 # 删除重复包
 
+rm -rf package/small-package/luci-app-wechatpush
 # rm -rf feeds/luci/applications/luci-app-netdata
 rm -rf feeds/luci/applications/luci-app-qbittorrent
 rm -rf feeds/packages/net/qBittorrent-static
