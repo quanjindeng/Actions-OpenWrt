@@ -62,6 +62,7 @@ rm -rf package/small-package/luci-app-netdata
 rm -rf package/small-package/luci-app-qbittorrent
 rm -rf package/small-package/qBittorrent-static
 rm -rf package/small-package/qBittorrent
+rm -rf package/small-package/qbittorrent
 rm -rf package/small-package/nftables
 rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf package/small-package/luci-app-openvpn-server
