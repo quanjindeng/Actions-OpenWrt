@@ -41,19 +41,20 @@ sed -i '/exit 0/i\chmod +x /etc/init.d/*' package/lean/default-settings/files/zz
 # 拉取软件包
 
 git clone https://github.com/kenzok8/small-package package/small-package
-# git clone -b luci https://github.com/pexcn/openwrt-chinadns-ng.git package/diy/luci-app-chinadns-ng
-# svn co https://github.com/immortalwrt-collections/openwrt-gowebdav/trunk/luci-app-gowebdav package/diy/luci-app-gowebdav
-# svn co https://github.com/immortalwrt-collections/openwrt-gowebdav/trunk/gowebdav package/diy/gowebdav
-git clone https://github.com/jerrykuku/luci-app-argon-config.git package/diy/luci-app-argon-config
-git clone https://github.com/jerrykuku/luci-theme-argon.git package/diy/luci-theme-argon
-git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/diy/luci-app-unblockneteasemusic
-# svn co https://github.com/kiddin9/openwrt-packages/trunk/UnblockNeteaseMusic-Go package/diy/UnblockNeteaseMusic-Go
-# svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-unblockneteasemusic-go package/diy/luci-app-unblockneteasemusic-go
-# git clone https://github.com/sirpdboy/luci-app-netdata package/diy/luci-app-netdata
-git clone https://github.com/sirpdboy/luci-app-parentcontrol package/diy/luci-app-parentcontrol
-git clone https://github.com/sirpdboy/netspeedtest.git package/diy/netspeedtest
+# git clone -b luci https://github.com/pexcn/openwrt-chinadns-ng.git package/deng/luci-app-chinadns-ng
+# svn co https://github.com/immortalwrt-collections/openwrt-gowebdav/trunk/luci-app-gowebdav package/deng/luci-app-gowebdav
+# svn co https://github.com/immortalwrt-collections/openwrt-gowebdav/trunk/gowebdav package/deng/gowebdav
+git clone https://github.com/jerrykuku/luci-app-argon-config.git package/deng/luci-app-argon-config
+git clone https://github.com/jerrykuku/luci-theme-argon.git package/deng/luci-theme-argon
+git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/deng/luci-app-unblockneteasemusic
+# svn co https://github.com/kiddin9/openwrt-packages/trunk/UnblockNeteaseMusic-Go package/deng/UnblockNeteaseMusic-Go
+# svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-unblockneteasemusic-go package/deng/luci-app-unblockneteasemusic-go
+# git clone https://github.com/sirpdboy/luci-app-netdata package/deng/luci-app-netdata
+git clone https://github.com/sirpdboy/luci-app-parentcontrol package/deng/luci-app-parentcontrol
+git clone https://github.com/sirpdboy/netspeedtest.git package/deng/netspeedtest
 git clone --depth 1 https://github.com/immortalwrt/luci deng-tmp7 && mv deng-tmp7/applications/luci-app-dufs package/luci-app-dufs
 git clone --depth 1 https://github.com/immortalwrt/packages deng-tmp8 && mv deng-tmp8/net/dufs package/dufs
+git clone --depth 1 https://github.com/tty228/luci-app-wechatpush.git package/deng/luci-app-wechatpush
 
 # 删除重复包
 
@@ -86,7 +87,7 @@ rm -rf package/small-package/opkg
 rm -rf package/small-package/natflow
 
 # 其他调整
-NAME=$"package/diy/luci-app-unblockneteasemusic/root/usr/share/unblockneteasemusic" && mkdir -p $NAME/core
+NAME=$"package/deng/luci-app-unblockneteasemusic/root/usr/share/unblockneteasemusic" && mkdir -p $NAME/core
 curl 'https://api.github.com/repos/UnblockNeteaseMusic/server/commits?sha=enhanced&path=precompiled' -o commits.json
 echo "$(grep sha commits.json | sed -n "1,1p" | cut -c 13-52)">"$NAME/core_local_ver"
 curl -L https://github.com/UnblockNeteaseMusic/server/raw/enhanced/precompiled/app.js -o $NAME/core/app.js
