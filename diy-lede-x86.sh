@@ -59,6 +59,10 @@ git clone --depth 1 https://github.com/immortalwrt/packages deng-tmp8 && mv deng
 
 # rm -rf feeds/luci/applications/luci-app-netdata
 rm -rf package/small-package/luci-app-netdata
+rm -rf package/small-package/luci-app-qbittorrent
+rm -rf package/small-package/qBittorrent-static
+rm -rf package/small-package/qBittorrent
+rm -rf package/small-package/nftables
 rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf package/small-package/luci-app-openvpn-server
 rm -rf package/small-package/openvpn-easy-rsa-whisky
@@ -75,6 +79,7 @@ rm -rf package/small-package/upx-static
 rm -rf package/small-package/upx
 rm -rf package/small-package/firewall*
 rm -rf package/small-package/opkg
+rm -rf package/small-package/natflow
 
 # 其他调整
 NAME=$"package/diy/luci-app-unblockneteasemusic/root/usr/share/unblockneteasemusic" && mkdir -p $NAME/core
