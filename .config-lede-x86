@@ -43,7 +43,7 @@ CONFIG_PACKAGE_appfilter=y
 # CONFIG_PACKAGE_autosamba is not set
 # CONFIG_PACKAGE_avahi-dbus-daemon is not set
 CONFIG_PACKAGE_badblocks=y
-CONFIG_PACKAGE_bandwidthd=y
+# CONFIG_PACKAGE_bandwidthd is not set
 CONFIG_PACKAGE_bash=y
 CONFIG_PACKAGE_blkid=y
 CONFIG_PACKAGE_blockd=y
@@ -241,7 +241,7 @@ CONFIG_PACKAGE_luci-app-advanced-reboot=y
 CONFIG_PACKAGE_luci-app-alist=y
 # CONFIG_PACKAGE_luci-app-alpha-config is not set
 CONFIG_PACKAGE_luci-app-argon-config=y
-CONFIG_PACKAGE_luci-app-bandwidthd=y
+# CONFIG_PACKAGE_luci-app-bandwidthd is not set
 # CONFIG_PACKAGE_luci-app-bypass_INCLUDE_ShadowsocksR_Libev_Client is not set
 # CONFIG_PACKAGE_luci-app-bypass_INCLUDE_ShadowsocksR_Libev_Server is not set
 # CONFIG_PACKAGE_luci-app-bypass_INCLUDE_Shadowsocks_Libev_Client is not set
