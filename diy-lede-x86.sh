@@ -9,6 +9,8 @@
 # File name: diy-part2.sh
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
+# https://github.com/quanjindeng/Actions-OpenWrt
+
 
 # sed -i '/CYXluq4wUazHjmCDBCqXF/d' package/lean/default-settings/files/zzz-default-settings    # 设置密码为空
 
@@ -23,6 +25,7 @@ sed -i "s/OpenWrt /Deng Build $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" package
 
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 10.10.10.1）
 sed -i 's/192.168.1.1/10.10.10.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/10.10.10.1/g' package/base-files/luci2/bin/config_generate
 
 # Modify system hostname（FROM OpenWrt CHANGE TO OpenWrt-x86）
 # sed -i 's/OpenWrt/OpenWrt-x86/g' package/base-files/files/bin/config_generate
