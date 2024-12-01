@@ -93,8 +93,9 @@ rm -rf package/small-package/upx
 rm -rf package/small-package/firewall*
 rm -rf package/small-package/opkg
 rm -rf package/small-package/natflow
-rm -rf package/small-package/luci-app-dockerman
-rm -rf package/small-package/docker*
+# rm -rf package/small-package/luci-app-dockerman
+# rm -rf package/small-package/docker*
+rm -rf feeds/luci/applications/luci-app-dockerman
 rm -rf package/small-package/dnsmasq
 rm -rf package/small-package/luci-app-dnsfilter
 
