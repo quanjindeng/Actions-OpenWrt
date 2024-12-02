@@ -121,8 +121,8 @@ sed -i 's#mount -t cifs#mount.cifs#g' feeds/luci/applications/luci-app-cifs-moun
 # mosdns
 find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
 find ./ | grep Makefile | grep mosdns | xargs rm -f
-git clone https://github.com/sbwml/luci-app-mosdns package/diy/mosdns
-git clone https://github.com/sbwml/v2ray-geodata package/diy/geodata
+git clone https://github.com/sbwml/luci-app-mosdns package/deng/mosdns
+git clone https://github.com/sbwml/v2ray-geodata package/deng/geodata
 
 sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/luci-app-dufs/Makefile
 sed -i 's#../../#$(TOPDIR)/feeds/packages/#g' package/dufs/Makefile
