@@ -160,6 +160,7 @@ jobs:
           固件体积较大，首次刷入需先刷GPT大分区表。
           istore固件可用uboot直刷，建议先使用istore固件进行过渡。
           刷入大分区表后使用mkfs.ext4命令格式化27分区并挂载好，之后再把固件kernel和rootfs上传，ssh下使用dd命令分别刷入到16、18分区，重新通电红灯常亮即刷入完成。
+          Wifi测试不理想的，降低Wifi功率，亚瑟22及以下，雅典娜26及以下（FEM导致，固件默认给的功率较高）。
           
     - name: 清理Actions空间
       uses: Mattraks/delete-workflow-runs@main
