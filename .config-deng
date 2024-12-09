@@ -43,13 +43,13 @@ CONFIG_PACKAGE_TAR_BZIP2=y
 CONFIG_PACKAGE_TAR_GZIP=y
 CONFIG_PACKAGE_TAR_XZ=y
 CONFIG_PACKAGE_TAR_ZSTD=y
-CONFIG_PACKAGE_acme=y
-CONFIG_PACKAGE_acme-acmesh=y
-CONFIG_PACKAGE_acme-common=y
+# CONFIG_PACKAGE_acme is not set
+# CONFIG_PACKAGE_acme-acmesh is not set
+# CONFIG_PACKAGE_acme-common is not set
 CONFIG_PACKAGE_adblock=y
-CONFIG_PACKAGE_adguardhome=y
+# CONFIG_PACKAGE_adguardhome is not set
 CONFIG_PACKAGE_alist=y
-CONFIG_PACKAGE_aliyundrive-webdav=y
+# CONFIG_PACKAGE_aliyundrive-webdav is not set
 CONFIG_PACKAGE_aria2=y
 CONFIG_PACKAGE_bash=y
 CONFIG_PACKAGE_blkid=y
@@ -73,7 +73,7 @@ CONFIG_PACKAGE_coreutils-sort=y
 CONFIG_PACKAGE_curl=y
 CONFIG_PACKAGE_default-settings=y
 CONFIG_PACKAGE_default-settings-chn=y
-CONFIG_PACKAGE_ddns-go=y
+# CONFIG_PACKAGE_ddns-go is not set
 CONFIG_PACKAGE_dns2socks=y
 CONFIG_PACKAGE_dns2tcp=y
 # CONFIG_PACKAGE_dnsmasq is not set
@@ -178,22 +178,12 @@ CONFIG_PACKAGE_kmod-oid-registry=y
 CONFIG_PACKAGE_kmod-scsi-core=y
 CONFIG_PACKAGE_kmod-tun=y
 CONFIG_PACKAGE_kmod-usb-core=y
-CONFIG_PACKAGE_kmod-usb-ehci=y
 CONFIG_PACKAGE_kmod-usb-hid=y
-CONFIG_PACKAGE_kmod-usb-net=y
-CONFIG_PACKAGE_kmod-usb-net-cdc-ether=y
-CONFIG_PACKAGE_kmod-usb-net-ipheth=y
-CONFIG_PACKAGE_kmod-usb-net-rndis=y
-CONFIG_PACKAGE_kmod-usb-serial=y
-CONFIG_PACKAGE_kmod-usb-serial-option=y
-CONFIG_PACKAGE_kmod-usb-serial-qualcomm=y
-CONFIG_PACKAGE_kmod-usb-serial-wwan=y
 CONFIG_PACKAGE_kmod-usb-storage=y
 CONFIG_PACKAGE_kmod-usb-storage-extras=y
 CONFIG_PACKAGE_kmod-usb-storage-uas=y
 CONFIG_PACKAGE_kmod-usb-xhci-hcd=y
 CONFIG_PACKAGE_kmod-usb2=y
-CONFIG_PACKAGE_kmod-usb2-pci=y
 CONFIG_PACKAGE_kmod-usb3=y
 CONFIG_PACKAGE_kmod-veth=y
 CONFIG_PACKAGE_kmod-zram=y
@@ -275,14 +265,15 @@ CONFIG_PACKAGE_lscpu=y
 CONFIG_PACKAGE_lua=y
 CONFIG_PACKAGE_lua-neturl=y
 CONFIG_PACKAGE_luci=y
-CONFIG_PACKAGE_luci-app-acme=y
+# CONFIG_PACKAGE_luci-app-acme is not set
 CONFIG_PACKAGE_luci-app-adblock=y
 CONFIG_PACKAGE_luci-app-adguardhome=y
+# CONFIG_PACKAGE_luci-app-adguardhome_INCLUDE_binary is not set
 CONFIG_PACKAGE_luci-app-alist=y
-CONFIG_PACKAGE_luci-app-aliyundrive-webdav=y
+# CONFIG_PACKAGE_luci-app-aliyundrive-webdav is not set
 CONFIG_PACKAGE_luci-app-argon-config=y
 CONFIG_PACKAGE_luci-app-aria2=y
-CONFIG_PACKAGE_luci-app-ddns-go=y
+# CONFIG_PACKAGE_luci-app-ddns-go is not set
 CONFIG_PACKAGE_luci-app-diskman=y
 CONFIG_PACKAGE_luci-app-diskman_INCLUDE_btrfs_progs=y
 CONFIG_PACKAGE_luci-app-diskman_INCLUDE_lsblk=y
@@ -292,9 +283,9 @@ CONFIG_PACKAGE_luci-app-frpc=y
 CONFIG_PACKAGE_luci-app-dufs=y
 CONFIG_PACKAGE_luci-app-hd-idle=y
 CONFIG_PACKAGE_luci-app-ksmbd=y
-CONFIG_PACKAGE_luci-app-natmap=y
+# CONFIG_PACKAGE_luci-app-natmap is not set
 CONFIG_PACKAGE_luci-app-netdata=y
-CONFIG_PACKAGE_luci-app-openvpn=y
+# CONFIG_PACKAGE_luci-app-openvpn is not set
 CONFIG_PACKAGE_luci-app-opkg=y
 CONFIG_PACKAGE_luci-app-passwall=y
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_ShadowsocksR_Libev_Client is not set
@@ -306,11 +297,11 @@ CONFIG_PACKAGE_luci-app-passwall_INCLUDE_SingBox=y
 CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Xray=y
 CONFIG_PACKAGE_luci-app-passwall_Nftables_Transparent_Proxy=y
 CONFIG_PACKAGE_luci-app-poweroff=y
-CONFIG_PACKAGE_luci-app-pushbot=y
+# CONFIG_PACKAGE_luci-app-pushbot is not set
 CONFIG_PACKAGE_luci-app-qbittorrent=y
 CONFIG_PACKAGE_luci-app-ttyd=y
-CONFIG_PACKAGE_luci-app-uhttpd=y
-CONFIG_PACKAGE_luci-app-unblockneteasemusic=y
+# CONFIG_PACKAGE_luci-app-uhttpd is not set
+# CONFIG_PACKAGE_luci-app-unblockneteasemusic is not set
 CONFIG_PACKAGE_luci-app-upnp=y
 # CONFIG_PACKAGE_luci-app-vnstat2 is not set
 CONFIG_PACKAGE_luci-app-vsftpd=y
@@ -319,28 +310,28 @@ CONFIG_PACKAGE_luci-app-wechatpush=y
 CONFIG_PACKAGE_luci-app-wolplus=y
 CONFIG_PACKAGE_luci-base=y
 CONFIG_PACKAGE_luci-compat=y
-CONFIG_PACKAGE_luci-i18n-acme-zh-cn=y
+# CONFIG_PACKAGE_luci-i18n-acme-zh-cn is not set
 CONFIG_PACKAGE_luci-i18n-adblock-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-adguardhome-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-alist-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-aliyundrive-webdav-zh-cn=y
+# CONFIG_PACKAGE_luci-i18n-aliyundrive-webdav-zh-cn is not set
 CONFIG_PACKAGE_luci-i18n-argon-config-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-aria2-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-base-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-ddns-go-zh-cn=y
+# CONFIG_PACKAGE_luci-i18n-ddns-go-zh-cn is not set
 CONFIG_PACKAGE_luci-i18n-dockerman-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-firewall-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-frpc-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-dufs-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-hd-idle-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-ksmbd-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-natmap-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-openvpn-zh-cn=y
+# CONFIG_PACKAGE_luci-i18n-natmap-zh-cn is not set
+# CONFIG_PACKAGE_luci-i18n-openvpn-zh-cn is not set
 CONFIG_PACKAGE_luci-i18n-opkg-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-passwall-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-ssr-plus-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-ttyd-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-uhttpd-zh-cn=y
+# CONFIG_PACKAGE_luci-i18n-uhttpd-zh-cn is not set
 CONFIG_PACKAGE_luci-i18n-upnp-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-vnstat2-zh-cn is not set
 CONFIG_PACKAGE_luci-i18n-watchcat-zh-cn=y
@@ -367,11 +358,11 @@ CONFIG_PACKAGE_luci-theme-bootstrap=y
 CONFIG_PACKAGE_microsocks=y
 # CONFIG_PACKAGE_miniupnpd-nftables is not set
 CONFIG_PACKAGE_mkf2fs=y
-CONFIG_PACKAGE_mtd=y
-CONFIG_PACKAGE_natmap=y
+# CONFIG_PACKAGE_mtd is not set
+# CONFIG_PACKAGE_natmap is not set
 CONFIG_PACKAGE_netdata=y
 CONFIG_PACKAGE_netperf=y
-CONFIG_PACKAGE_node=y
+# CONFIG_PACKAGE_node is not set
 CONFIG_PACKAGE_ntfs-3g=y
 CONFIG_PACKAGE_ntfs-3g-utils=y
 CONFIG_PACKAGE_openssh-client=y
@@ -382,7 +373,7 @@ CONFIG_PACKAGE_openssh-sftp-server=y
 CONFIG_PACKAGE_openssl-util=y
 CONFIG_PACKAGE_parted=y
 CONFIG_PACKAGE_qbittorrent=y
-CONFIG_PACKAGE_rblibtorrent=y
+# CONFIG_PACKAGE_rblibtorrent is not set
 CONFIG_PACKAGE_resolveip=y
 CONFIG_PACKAGE_rpcd=y
 CONFIG_PACKAGE_rpcd-mod-file=y
@@ -412,10 +403,10 @@ CONFIG_PACKAGE_ttyd=y
 CONFIG_PACKAGE_ucode-mod-html=y
 CONFIG_PACKAGE_ucode-mod-lua=y
 CONFIG_PACKAGE_ucode-mod-math=y
-CONFIG_PACKAGE_uhttpd=y
-CONFIG_PACKAGE_uhttpd-mod-lua=y
-CONFIG_PACKAGE_uhttpd-mod-ubus=y
-CONFIG_PACKAGE_uhttpd-mod-ucode=y
+# CONFIG_PACKAGE_uhttpd is not set
+# CONFIG_PACKAGE_uhttpd-mod-lua is not set
+# CONFIG_PACKAGE_uhttpd-mod-ubus is not set
+# CONFIG_PACKAGE_uhttpd-mod-ucode is not set
 CONFIG_PACKAGE_unzip=y
 CONFIG_PACKAGE_usbids=y
 CONFIG_PACKAGE_usbutils=y
