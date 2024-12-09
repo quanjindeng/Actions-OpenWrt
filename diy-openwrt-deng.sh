@@ -13,7 +13,7 @@ git clone --depth 1 https://github.com/sbwml/luci-app-alist package/deng/luci-ap
 git clone --depth 1 https://github.com/kenzok78/luci-app-adguardhome package/deng/luci-app-adguardhome
 git clone --depth 1 https://github.com/zzsj0928/luci-app-pushbot package/deng/luci-app-pushbot
 git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go package/deng/luci-app-ddns-go
-git clone --depth 1 https://github.com/Jason6111/luci-app-netdata package/deng/luci-app-netdata
+# git clone --depth 1 https://github.com/Jason6111/luci-app-netdata package/deng/luci-app-netdata
 git clone --depth 1 https://github.com/esirplayground/luci-app-poweroff package/deng/luci-app-poweroff
 git clone --depth 1 https://github.com/tty228/luci-app-wechatpush.git package/deng/luci-app-wechatpush
 # git clone --depth 1 https://github.com/lisaac/luci-app-dockerman package/deng/luci-app-dockerman
