@@ -300,7 +300,7 @@ CONFIG_PACKAGE_luci-app-passwall_Nftables_Transparent_Proxy=y
 CONFIG_PACKAGE_luci-app-poweroff=y
 # CONFIG_PACKAGE_luci-app-pushbot is not set
 CONFIG_PACKAGE_luci-app-qbittorrent=y
-CONFIG_PACKAGE_luci-app-mosdns=y
+CONFIG_PACKAGE_luci-app-smartdns=y
 CONFIG_PACKAGE_luci-app-ttyd=y
 # CONFIG_PACKAGE_luci-app-uhttpd is not set
 # CONFIG_PACKAGE_luci-app-unblockneteasemusic is not set
@@ -332,7 +332,7 @@ CONFIG_PACKAGE_luci-i18n-ksmbd-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-passwall-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-qbittorrent-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-bypass-zh-cn is not set
-CONFIG_PACKAGE_luci-i18n-mosdns-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-smartdns-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-ssr-plus-zh-cn is not set
 CONFIG_PACKAGE_luci-i18n-ttyd-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-uhttpd-zh-cn is not set
