@@ -375,6 +375,8 @@ CONFIG_PACKAGE_openssh-keygen=y
 CONFIG_PACKAGE_openssh-server=y
 CONFIG_PACKAGE_openssh-sftp-server=y
 CONFIG_PACKAGE_openssl-util=y
+CONFIG_PACKAGE_openvpn-openssl=y
+CONFIG_PACKAGE_openvpn-easy-rsa=y
 CONFIG_PACKAGE_parted=y
 CONFIG_PACKAGE_qbittorrent=y
 # CONFIG_PACKAGE_rblibtorrent is not set
