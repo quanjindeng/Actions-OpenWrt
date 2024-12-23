@@ -2,6 +2,7 @@
 
 # rm -rf feeds/luci/applications/luci-app-dockerman
 rm -rf feeds/packages/net/openvpn-easy-rsa && rm -rf feeds/packages/net/openvpn
+rm -rf package/feeds/packages/openvpn-easy-rsa && rm -rf package/feeds/packages/openvpn
 
 git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/deng/luci-app-argon-config
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/deng/luci-theme-argon
