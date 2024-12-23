@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # rm -rf feeds/luci/applications/luci-app-dockerman
-rm -rf feeds/packages/net/openvpn-easy-rsa && rm -rf feeds/packages/net/openvpn
-rm -rf package/feeds/packages/openvpn-easy-rsa && rm -rf package/feeds/packages/openvpn
+# rm -rf feeds/packages/net/openvpn-easy-rsa && rm -rf feeds/packages/net/openvpn
+# rm -rf package/feeds/packages/openvpn-easy-rsa && rm -rf package/feeds/packages/openvpn
 
 git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/deng/luci-app-argon-config
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/deng/luci-theme-argon
@@ -31,8 +31,10 @@ git clone --depth 1 https://github.com/coolsnowwolf/lede deng-tmp4 && mv deng-tm
 git clone --depth 1 https://github.com/coolsnowwolf/luci deng-tmp5 && mv deng-tmp5/applications/luci-app-vsftpd package/deng/luci-app-vsftpd && mv deng-tmp5/applications/luci-app-cpufreq package/deng/luci-app-cpufreq
 #&& mv deng-tmp5/applications/luci-app-diskman package/deng/luci-app-diskman && mv deng-tmp5/applications/luci-app-qbittorrent package/deng/luci-app-qbittorrent 
 # git clone --depth 1 https://github.com/coolsnowwolf/packages deng-tmp6 && mv deng-tmp6/libs/rblibtorrent package/deng/rblibtorrent && mv deng-tmp6/libs/qttools package/deng/qttools && mv deng-tmp6/libs/qtbase package/deng/qtbase && mv deng-tmp6/net/qBittorrent package/deng/qBittorrent && mv deng-tmp6/net/qBittorrent-static package/deng/qBittorrent-static
-git clone --depth 1 https://github.com/immortalwrt/luci deng-tmp7 && mv deng-tmp7/applications/luci-app-dufs package/deng/luci-app-dufs && mv deng-tmp7/applications/luci-app-openvpn-server package/deng/luci-app-openvpn-server
-git clone --depth 1 https://github.com/immortalwrt/packages deng-tmp8 && mv deng-tmp8/net/dufs package/deng/dufs && mv deng-tmp8/net/openvpn package/deng/openvpn && mv deng-tmp8/net/openvpn-easy-rsa package/deng/openvpn-easy-rsa
+git clone --depth 1 https://github.com/immortalwrt/luci deng-tmp7 && mv deng-tmp7/applications/luci-app-dufs package/deng/luci-app-dufs
+#&& mv deng-tmp7/applications/luci-app-openvpn-server package/deng/luci-app-openvpn-server
+git clone --depth 1 https://github.com/immortalwrt/packages deng-tmp8 && mv deng-tmp8/net/dufs package/deng/dufs
+#&& mv deng-tmp8/net/openvpn package/deng/openvpn && mv deng-tmp8/net/openvpn-easy-rsa package/deng/openvpn-easy-rsa
 # git clone --depth 1 https://github.com/coolsnowwolf/lede deng-tmp9 && mv deng-tmp9/package/lean/shortcut-fe package/deng/shortcut-fe
 # git clone --depth 1 https://github.com/coolsnowwolf/luci deng-tmp10 && mv deng-tmp10/applications/luci-app-turboacc package/deng/luci-app-turboacc
 git clone --depth 1 https://github.com/lisaac/luci-app-diskman package/deng/luci-app-diskman
@@ -53,7 +55,7 @@ sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-dufs/Makefile
 sed -i 's#../../#$(TOPDIR)/feeds/packages/#g' package/deng/dufs/Makefile
 sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-cpufreq/Makefile
 # sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-turboacc/Makefile
-sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-openvpn-server/Makefile
+# sed -i 's#../../#$(TOPDIR)/feeds/luci/#g' package/deng/luci-app-openvpn-server/Makefile
 
 NAME=$"package/deng/luci-app-unblockneteasemusic/root/usr/share/unblockneteasemusic" && mkdir -p $NAME/core
 curl 'https://api.github.com/repos/UnblockNeteaseMusic/server/commits?sha=enhanced&path=precompiled' -o commits.json
