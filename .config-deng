@@ -302,7 +302,7 @@ CONFIG_PACKAGE_luci-app-poweroff=y
 CONFIG_PACKAGE_luci-app-qbittorrent=y
 CONFIG_PACKAGE_luci-app-tailscale=y
 CONFIG_PACKAGE_luci-app-ttyd=y
-# CONFIG_PACKAGE_luci-app-uhttpd is not set
+CONFIG_PACKAGE_luci-app-uhttpd=y
 # CONFIG_PACKAGE_luci-app-unblockneteasemusic is not set
 CONFIG_PACKAGE_luci-app-upnp=y
 # CONFIG_PACKAGE_luci-app-vnstat2 is not set
@@ -335,7 +335,7 @@ CONFIG_PACKAGE_luci-i18n-qbittorrent-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-ssr-plus-zh-cn is not set
 CONFIG_PACKAGE_luci-i18n-tailscale-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-ttyd-zh-cn=y
-# CONFIG_PACKAGE_luci-i18n-uhttpd-zh-cn is not set
+CONFIG_PACKAGE_luci-i18n-uhttpd-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-upnp-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-vnstat2-zh-cn is not set
 CONFIG_PACKAGE_luci-i18n-watchcat-zh-cn=y
@@ -409,10 +409,10 @@ CONFIG_PACKAGE_ttyd=y
 CONFIG_PACKAGE_ucode-mod-html=y
 CONFIG_PACKAGE_ucode-mod-lua=y
 CONFIG_PACKAGE_ucode-mod-math=y
-# CONFIG_PACKAGE_uhttpd is not set
-# CONFIG_PACKAGE_uhttpd-mod-lua is not set
-# CONFIG_PACKAGE_uhttpd-mod-ubus is not set
-# CONFIG_PACKAGE_uhttpd-mod-ucode is not set
+# CONFIG_PACKAGE_uhttpd=y
+CONFIG_PACKAGE_uhttpd-mod-lua=y
+CONFIG_PACKAGE_uhttpd-mod-ubus=y
+CONFIG_PACKAGE_uhttpd-mod-ucode=y
 CONFIG_PACKAGE_unzip=y
 CONFIG_PACKAGE_usbids=y
 CONFIG_PACKAGE_usbutils=y
