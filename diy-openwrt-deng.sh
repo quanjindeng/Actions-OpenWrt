@@ -14,7 +14,7 @@ git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2 package/deng/
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/deng/passwall-packages
 git clone --depth 1 https://github.com/sbwml/luci-app-alist package/deng/luci-app-alist
 git clone --depth 1 https://github.com/sbwml/luci-app-qbittorrent package/deng/luci-app-qbittorrent
-# git clone --depth 1 https://github.com/sbwml/luci-app-mosdns package/deng/luci-app-mosdns
+git clone --depth 1 https://github.com/sbwml/luci-app-mosdns package/deng/luci-app-mosdns
 git clone --depth 1 https://github.com/kenzok78/luci-app-adguardhome package/deng/luci-app-adguardhome
 git clone --depth 1 https://github.com/zzsj0928/luci-app-pushbot package/deng/luci-app-pushbot
 git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go package/deng/luci-app-ddns-go
@@ -40,12 +40,6 @@ git clone --depth 1 https://github.com/immortalwrt/packages deng-tmp8 && mv deng
 # git clone --depth 1 https://github.com/coolsnowwolf/luci deng-tmp10 && mv deng-tmp10/applications/luci-app-turboacc package/deng/luci-app-turboacc
 git clone --depth 1 https://github.com/lisaac/luci-app-diskman package/deng/luci-app-diskman
 git clone --depth 1 https://github.com/asvow/luci-app-tailscale package/deng/luci-app-tailscale
-
-# drop mosdns and v2ray-geodata packages that come with the source
-find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
-find ./ | grep Makefile | grep mosdns | xargs rm -f
-git clone --depth 1 https://github.com/sbwml/luci-app-mosdns package/deng/mosdns
-git clone --depth 1 https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 10.10.10.1）
 sed -i 's/192.168.1.1/10.10.10.1/g' package/base-files/files/bin/config_generate
