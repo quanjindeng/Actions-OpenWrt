@@ -14,7 +14,7 @@ git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2 package/deng/
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/deng/passwall-packages
 git clone --depth 1 https://github.com/sbwml/luci-app-alist package/deng/luci-app-alist
 git clone --depth 1 https://github.com/sbwml/luci-app-qbittorrent package/deng/luci-app-qbittorrent
-git clone --depth 1 https://github.com/sbwml/luci-app-mosdns package/deng/luci-app-mosdns
+git clone --depth 1 https://github.com/QiuSimons/openwrt-mos package/deng/luci-app-mosdns
 git clone --depth 1 https://github.com/kenzok78/luci-app-adguardhome package/deng/luci-app-adguardhome
 git clone --depth 1 https://github.com/zzsj0928/luci-app-pushbot package/deng/luci-app-pushbot
 git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go package/deng/luci-app-ddns-go
