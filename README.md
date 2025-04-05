@@ -1,7 +1,7 @@
 # Actions-OpenWrt
-Actions云编译，一键生成OpenWrt固件。
+Actions云编译，一键生成OpenWrt固件
 
-定时任务默认编译OpenWrt官方源码固件。
+定时任务编译
 
 - 默认ip：10.10.10.1
 
@@ -12,7 +12,7 @@ Actions云编译，一键生成OpenWrt固件。
 - [OpenWrt 官方源码仓库](https://github.com/openwrt/openwrt)
 - [Lean's OpenWrt源码仓库](https://github.com/coolsnowwolf/lede)
 - [immortalwrt's OpenWrt源码仓库](https://github.com/immortalwrt/immortalwrt)
-- [适用于IPQ系列设备OpenWrt源码仓库](https://github.com/King-Of-Knights/openwrt-6.x)
+- [ImmortalWRT集成满血NSS驱动IPQ系列设备OpenWrt源码仓库](https://github.com/VIKINGYFY/immortalwrt)
 - [kenzok8 软件包集合仓库](https://github.com/kenzok8/small-package)
 - [p3terx 云编译教程](https://p3terx.com/archives/build-openwrt-with-github-actions.html)
 - 所有OpenWrt源码贡献者、插件开发者
