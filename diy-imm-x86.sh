@@ -86,3 +86,6 @@ find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
 find ./ | grep Makefile | grep mosdns | xargs rm -f
 git clone https://github.com/sbwml/luci-app-mosdns package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/geodata
+
+#rust编译错误临时修复
+sed -i 's#llvm.download-ci-llvm=true#llvm.download-ci-llvm="if-unchanged"#g' feeds/packages/lang/rust/Makefile
