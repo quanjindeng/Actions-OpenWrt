@@ -89,3 +89,4 @@ git clone https://github.com/sbwml/v2ray-geodata package/geodata
 
 #rust编译错误临时修复
 sed -i 's#llvm.download-ci-llvm=true#llvm.download-ci-llvm="if-unchanged"#g' feeds/packages/lang/rust/Makefile
+unset CI
