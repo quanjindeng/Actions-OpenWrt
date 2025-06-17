@@ -9,7 +9,7 @@ git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/deng/ne
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall package/deng/luci-app-passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2 package/deng/luci-app-passwall2
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/deng/passwall-packages
-git clone --depth 1 https://github.com/sbwml/luci-app-alist package/deng/luci-app-alist
+git clone --depth 1 https://github.com/sbwml/luci-app-openlist package/deng/luci-app-openlist
 # git clone --depth 1 https://github.com/sbwml/luci-app-qbittorrent package/deng/luci-app-qbittorrent
 # git clone --depth 1 https://github.com/QiuSimons/openwrt-mos package/deng/luci-app-mosdns
 git clone --depth 1 https://github.com/kenzok78/luci-app-adguardhome package/deng/luci-app-adguardhome
