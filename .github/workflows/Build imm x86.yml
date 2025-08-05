@@ -26,24 +26,6 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-    - name: 创建编译空间挂载点
-      run: |
-        sudo mkdir -p /workdir
-        sudo chown $USER:$GROUPS /workdir
-        
-    - name: 最大化编译空间
-      uses: easimon/maximize-build-space@master
-      with:
-        root-reserve-mb: 2048
-        swap-size-mb: 4096
-        build-mount-path: /workdir
-        overprovision-lvm: 'true'
-        remove-dotnet: 'true'
-        remove-android: 'true'
-        remove-haskell: 'true'
-        remove-codeql: 'true'
-        remove-docker-images: 'true'
-
     - name: Checkout
       uses: actions/checkout@v4
 
@@ -83,11 +65,11 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         
     - name: 克隆源码
-      working-directory: /workdir
+      working-directory: /mnt/workdir
       run: |
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
-        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+        ln -sf /mnt/workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
     - name: 加载自定义feeds
       run: |
