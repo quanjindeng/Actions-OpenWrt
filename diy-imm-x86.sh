@@ -40,7 +40,6 @@ git clone --depth 1 https://github.com/sundaqiang/openwrt-packages deng-tmp3 && 
 # git clone --depth 1 https://github.com/coolsnowwolf/luci deng-tmp10 && mv deng-tmp10/applications/luci-app-turboacc package/deng/luci-app-turboacc
 git clone --depth 1 https://github.com/lisaac/luci-app-diskman package/deng/luci-app-diskman
 git clone --depth 1 https://github.com/asvow/luci-app-tailscale package/deng/luci-app-tailscale
-git clone --depth 1 https://github.com/destan19/OpenAppFilter package/deng/OpenAppFilter    
 
 # Modify default theme（FROM uci-theme-bootstrap CHANGE TO luci-theme-material）
 sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' ./feeds/luci/collections/luci/Makefile
