@@ -19,8 +19,8 @@ git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go package/deng/lu
 git clone --depth 1 https://github.com/esirplayground/luci-app-poweroff package/deng/luci-app-poweroff
 git clone --depth 1 https://github.com/tty228/luci-app-wechatpush.git package/deng/luci-app-wechatpush
 # git clone --depth 1 https://github.com/lisaac/luci-app-dockerman package/deng/luci-app-dockerman
-git clone --depth 1 https://github.com/vernesong/OpenClash package/deng/luci-app-openclash
-git clone --depth=1 https://github.com/fw876/helloworld.git package/deng/helloworld
+# git clone --depth 1 https://github.com/vernesong/OpenClash package/deng/luci-app-openclash
+# git clone --depth=1 https://github.com/fw876/helloworld.git package/deng/helloworld
 git clone --depth=1 https://github.com/brvphoenix/wrtbwmon package/deng/wrtbwmon
 git clone --depth=1 https://github.com/brvphoenix/luci-app-wrtbwmon package/deng/luci-app-wrtbwmon
 
@@ -63,6 +63,7 @@ rm -rf feeds/packages/net/naiveproxy
 # rm -rf feeds/luci/applications/luci-app-netdata
 rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf feeds/luci/applications/luci-app-passwall
+rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,trojan-plus,tuic-client,v2ray-plugin,xray-plugin,geoview,shadow-tls}
 
 # 其他调整
 NAME=$"package/luci-app-unblockneteasemusic/root/usr/share/unblockneteasemusic" && mkdir -p $NAME/core
