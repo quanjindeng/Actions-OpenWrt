@@ -41,6 +41,7 @@ git clone --depth 1 https://github.com/immortalwrt/packages deng-tmp8 && mv deng
 # git clone --depth 1 https://github.com/coolsnowwolf/luci deng-tmp10 && mv deng-tmp10/applications/luci-app-turboacc package/deng/luci-app-turboacc
 git clone --depth 1 https://github.com/lisaac/luci-app-diskman package/deng/luci-app-diskman
 git clone --depth 1 https://github.com/asvow/luci-app-tailscale package/deng/luci-app-tailscale
+git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/deng/OpenAppFilter    
 
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 10.10.10.1）
 sed -i 's/192.168.1.1/10.10.10.1/g' package/base-files/files/bin/config_generate
