@@ -2,21 +2,23 @@
 # https://github.com/quanjindeng/Actions_OpenWrt
 #
 
-name: Build JDC-AX1800
+name: Build OpenWrt-JDC-AX1800
 
 on:
   repository_dispatch:
   workflow_dispatch:
-  #schedule:
-  #  - cron: 0 16 4,9,14,19,24,28,31 * *
+#  schedule:
+#    - cron: 0 16 4,9,14,19,24,28,31 * *
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: master
+  REPO_URL: https://github.com/VIKINGYFY/immortalwrt
+  REPO_BRANCH: main
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config-jdc-ax1800
   DIY_P1_SH: diy-part1.sh
-  DIY_P2_SH: diy-lede-x86.sh
+  DIY_P2_SH: diy-ap.sh
+  UPLOAD_FIRMWARE: true
+  UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
 
 jobs:
@@ -24,24 +26,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: 创建编译空间挂载点
-      run: |
-        sudo mkdir -p /workdir
-        sudo chown $USER:$GROUPS /workdir
-        
-    - name: 最大化编译空间
-      uses: easimon/maximize-build-space@master
-      with:
-        root-reserve-mb: 2048
-        swap-size-mb: 4096
-        build-mount-path: /workdir
-        overprovision-lvm: 'true'
-        remove-dotnet: 'true'
-        remove-android: 'true'
-        remove-haskell: 'true'
-        remove-codeql: 'true'
-        remove-docker-images: 'true'
-
     - name: Checkout
       uses: actions/checkout@v4
 
@@ -67,25 +51,17 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        sudo apt update -y
-        sudo apt full-upgrade -y
-        sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \
-        bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib \
-        git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev \
-        libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz \
-        mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pyelftools \
-        libpython3-dev qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip \
-        vim wget xmlto xxd zlib1g-dev libfuse-dev
-        sudo -E apt-get -qq autoremove --purge
-        sudo -E apt-get -qq clean
+        sudo bash -c 'bash <(curl -s https://build-scripts.immortalwrt.org/init_build_environment.sh)'
         sudo timedatectl set-timezone "$TZ"
+        sudo mkdir /mnt/workdir
+        sudo chmod -R 777 /mnt/workdir
         
     - name: 克隆源码
-      working-directory: /workdir
+      working-directory: /mnt/workdir
       run: |
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
-        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+        ln -sf /mnt/workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
     - name: 加载自定义feeds
       run: |
@@ -134,7 +110,7 @@ jobs:
 
     - name: 整理文件
       id: organize
-      if: (!cancelled())
+      if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: |
         cd openwrt/bin/targets/*/*
         rm -rf packages
@@ -144,39 +120,46 @@ jobs:
         # rm -rf *-kernel.bin
         # rm -rf *-rootfs.img
         # rm -rf *-rootfs.img.gz
-        # rm -rf sha256sums
-    
-    - name: 发布固件
-      uses: ncipollo/release-action@v1
+        rm -rf sha256sums
+        echo "FIRMWARE=$PWD" >> $GITHUB_ENV
+        echo "status=success" >> $GITHUB_OUTPUT
+
+    - name: 上传固件
+      uses: actions/upload-artifact@v4
+      if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        tag: openwrt${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-        artifacts: openwrt/bin/targets/*/*/*
-        allowUpdates: true
-        token: ${{ secrets.GITHUB_TOKEN }}
-        body: |
-          京东云无线宝二代–亚瑟_JDC-AX1800 固件
-          默认管理地址：10.10.10.1。
-          默认关闭无线，刷机后需手动设置开启。
-          固件体积较大，首次刷入需先刷GPT大分区表。
-          istore固件可用uboot直刷，建议先使用istore固件进行过渡。
-          刷入大分区表后使用mkfs.ext4命令格式化27分区并挂载好，之后再把固件kernel和rootfs上传，ssh下使用dd命令分别刷入到16、18分区，重新通电红灯常亮即刷入完成。
-          Wifi测试不理想的，降低Wifi功率，亚瑟21及以下，雅典娜26及以下（FEM导致，固件默认给的功率较高）。
-          
-    - name: 清理Actions空间
+        name: OpenWrt_imm_x64_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        path: ${{ env.FIRMWARE }}
+
+    - name: 生成release标签
+      id: tag
+      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+      run: |
+        echo "release_tag=$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
+        touch release.txt
+        echo "status=success" >> $GITHUB_OUTPUT
+
+    - name: 发布固件
+      uses: softprops/action-gh-release@v1
+      if: steps.tag.outputs.status == 'success' && !cancelled()
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ steps.tag.outputs.release_tag }}
+        body_path: release.txt
+        files: ${{ env.FIRMWARE }}/*
+
+    - name: 清理workflow
       uses: Mattraks/delete-workflow-runs@main
       with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
-          keep_minimum_runs: 0
-          retain_days: 7
-          #retain_days: ${{ github.event.inputs.action_days }}
-    
-    - name: 删除多余releases
-      uses: dev-drprasad/delete-older-releases@master
+        retain_days: 1
+        keep_minimum_runs: 3
+
+    - name: 清理Releases
+      uses: dev-drprasad/delete-older-releases@v0.2.1
+      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       with:
-        repo: ${{ github.repository }}
-        keep_latest: 6
-        #keep_latest: ${{ github.event.inputs.rele }}
+        keep_latest: 3
         delete_tags: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
