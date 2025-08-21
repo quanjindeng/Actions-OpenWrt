@@ -11,8 +11,8 @@ on:
 #    - cron: 0 16 4,9,14,19,24,28,31 * *
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: master
+  REPO_URL: https://github.com/VIKINGYFY/immortalwrt
+  REPO_BRANCH: main
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config-jdc-ax1800
   DIY_P1_SH: diy-part1.sh
