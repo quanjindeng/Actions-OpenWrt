@@ -11,7 +11,7 @@ on:
 #    - cron: 0 16 4,9,14,19,24,28,31 * *
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/openwrt
+  REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config-ac2100
@@ -97,9 +97,9 @@ jobs:
       run: |
         cd openwrt
         make defconfig
-        FORCE=1 make download -j8
-        FORCE=1 find dl -size -1024c -exec ls -l {} \;
-        FORCE=1 find dl -size -1024c -exec rm -f {} \;
+        make download -j8
+        find dl -size -1024c -exec ls -l {} \;
+        find dl -size -1024c -exec rm -f {} \;
 
     - name: 编译固件
       id: compile
