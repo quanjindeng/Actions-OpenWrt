@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# 更改内核版本
+sed -i 's#^.*KERNEL_PATCHVER:=.*$#KERNEL_PATCHVER:=5.4#' target/linux/ramips/Makefile
+
 # git clone --depth 1 https://github.com/theosoft-git/luci-app-easymesh package/deng/luci-app-easymesh
 
 # 移除 openwrt feeds 自带的核心库
