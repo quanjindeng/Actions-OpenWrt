@@ -485,3 +485,40 @@ CONFIG_boost-variant-release=y
 # CONFIG_PACKAGE_trojan-plus is not set
 # CONFIG_PACKAGE_v2ray-plugin is not set
 # CONFIG_PACKAGE_xray-core is not set
+# ====== 文件系统支持 ======
+CONFIG_PACKAGE_kmod-fs-ext4=y
+CONFIG_PACKAGE_kmod-fs-f2fs=y
+CONFIG_PACKAGE_kmod-fs-exfat=y
+CONFIG_PACKAGE_kmod-fs-vfat=y
+CONFIG_PACKAGE_kmod-fs-ntfs3=y
+
+# ====== 网络与容器支持 ======
+CONFIG_PACKAGE_kmod-bridge=y
+CONFIG_PACKAGE_kmod-br-netfilter=y
+CONFIG_PACKAGE_kmod-nf-nathelper=y
+CONFIG_PACKAGE_kmod-nf-nathelper-extra=y
+CONFIG_PACKAGE_kmod-nf-conntrack=y
+CONFIG_PACKAGE_kmod-nf-conntrack-netlink=y
+CONFIG_PACKAGE_kmod-nf-ipt=y
+CONFIG_PACKAGE_kmod-nf-ipt6=y
+CONFIG_PACKAGE_kmod-nf-reject=y
+CONFIG_PACKAGE_kmod-nf-reject6=y
+
+# ====== VPN / 隧道支持 ======
+CONFIG_PACKAGE_kmod-tun=y
+
+# ====== ACPI / 电源管理 ======
+CONFIG_PACKAGE_kmod-acpi=y
+
+# ====== Docker 相关 ======
+CONFIG_PACKAGE_docker=y
+CONFIG_PACKAGE_dockerd=y
+CONFIG_PACKAGE_kmod-veth=y
+CONFIG_PACKAGE_kmod-macvlan=y
+CONFIG_PACKAGE_kmod-ipvlan=y
+
+# ====== 其他常用工具 ======
+CONFIG_PACKAGE_dnsmasq-full=y
+CONFIG_PACKAGE_ip-full=y
+CONFIG_PACKAGE_iptables-mod-extra=y
+CONFIG_PACKAGE_ip6tables-mod-nat=y
