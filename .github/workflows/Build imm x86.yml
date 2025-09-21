@@ -92,6 +92,7 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
+        export CARGO_NET_OFFLINE=false && make package/feeds/packages/rust/clean && make package/feeds/packages/rust/download && make package/feeds/packages/rust/compile V=s
     
     - name: 编译固件
       id: compile
