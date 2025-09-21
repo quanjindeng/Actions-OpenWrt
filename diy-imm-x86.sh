@@ -90,4 +90,3 @@ git clone https://github.com/sbwml/v2ray-geodata package/geodata
 
 #修复rust编译错误
 sed -i 's/--set=llvm\.download-ci-llvm=true/--set=llvm.download-ci-llvm=false/' feeds/packages/lang/rust/Makefile
-find feeds/packages/lang/rust/vendor -type f -name '*.orig' -delete
