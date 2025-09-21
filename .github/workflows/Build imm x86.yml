@@ -92,12 +92,6 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
-
-    - name: 临时：清理Rust软件包vendor目录中多余文件
-      run: |
-        cd openwrt
-        ls && ls ./feeds/packages/lang/rust
-        find ./feeds/packages/lang/rust/vendor -type f -name '*.orig' -delete
     
     - name: 编译固件
       id: compile
