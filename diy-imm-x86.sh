@@ -90,17 +90,21 @@ git clone https://github.com/sbwml/v2ray-geodata package/geodata
 
 #修复rust编译错误
 sed -i 's/--set=llvm\.download-ci-llvm=true/--set=llvm.download-ci-llvm=false/' feeds/packages/lang/rust/Makefile
-sed -i '/^define Host\/Compile/i\
-define Host/Patch\
-	$(if $(HOST_QUILT),rm -rf $(HOST_BUILD_DIR)/patches; mkdir -p $(HOST_BUILD_DIR)/patches)\
-	$(if $(HOST_QUILT),$(call PatchDir/Quilt,$(HOST_BUILD_DIR),$(HOST_PATCH_DIR),))\
-	$(if $(HOST_QUILT),touch $(HOST_BUILD_DIR)/.quilt_used)\
-	$(if $(HOST_QUILT),,$(if $(wildcard $(HOST_PATCH_DIR)/*.patch), \\
-		$(foreach p,$(sort $(wildcard $(HOST_PATCH_DIR)/*.patch)), \\
-			echo "Applying patch $(notdir $p)" ; \\
-			$(PATCH) -f -p1 -d $(HOST_BUILD_DIR) < $p || \\
-			{ echo "Patch failed! Please fix: $(notdir $p)!" ; exit 1 ; } ; \\
-		) \\
-	))\
-endef\
-' feeds/packages/lang/rust/Makefile
+awk '
+/^define Host\/Compile/ {
+    print "define Host/Patch"
+    print "\t$(if $(HOST_QUILT),rm -rf $(HOST_BUILD_DIR)/patches; mkdir -p $(HOST_BUILD_DIR)/patches)"
+    print "\t$(if $(HOST_QUILT),$(call PatchDir/Quilt,$(HOST_BUILD_DIR),$(HOST_PATCH_DIR),))"
+    print "\t$(if $(HOST_QUILT),touch $(HOST_BUILD_DIR)/.quilt_used)"
+    print "\t$(if $(HOST_QUILT),,$(if $(wildcard $(HOST_PATCH_DIR)/*.patch), \\"
+    print "\t\t$(foreach p,$(sort $(wildcard $(HOST_PATCH_DIR)/*.patch)), \\"
+    print "\t\t\techo \"Applying patch $(notdir $p)\" ; \\"
+    print "\t\t\t$(PATCH) -f -p1 -d $(HOST_BUILD_DIR) < $p || \\"
+    print "\t\t\t{ echo \"Patch failed! Please fix: $(notdir $p)!\" ; exit 1 ; } ; \\"
+    print "\t\t) \\"
+    print "\t))"
+    print "endef"
+    print ""   # 插入一个空行
+}
+{ print }
+' feeds/packages/lang/rust/Makefile > tmp && mv tmp feeds/packages/lang/rust/Makefile
