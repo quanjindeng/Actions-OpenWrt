@@ -107,4 +107,4 @@ awk '
     print ""   # 插入一个空行
 }
 { print }
-' feeds/packages/lang/rust/Makefile > tmp && mv tmp feeds/packages/lang/rust/Makefile
+' feeds/packages/lang/rust/Makefile > tmpfile && mv tmpfile feeds/packages/lang/rust/Makefile
