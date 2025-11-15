@@ -108,15 +108,3 @@ awk '
 }
 { print }
 ' feeds/packages/lang/rust/Makefile > tmpfile && mv tmpfile feeds/packages/lang/rust/Makefile
-
-mf="feeds/packages/libs/libdouble-conversion/Makefile"
-if [ -f "$mf" ]; then
-  # 如果已经存在相关设置则不再插入
-  if ! grep -q "CMAKE_POLICY_VERSION_MINIMUM=3.5" "$mf"; then
-    sed -i '/^PKG_RELEASE/ a\
-# 强制 CMake 最低策略以避免 "Compatibility with CMake < 3.5" 错误\nPKG_CONFIGURE_ARGS += -DCMAKE_POLICY_VERSION_MINIMUM=3.5\nCMAKE_ARGS += -DCMAKE_POLICY_VERSION_MINIMUM=3.5\n' "$mf"
-    echo "Patched $mf"
-  else
-    echo "$mf already patched"
-  fi
-fi
