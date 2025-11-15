@@ -104,6 +104,7 @@ jobs:
     
     - name: Add patch to bump CMake minimum for libdouble-conversion
       run: |
+        cd openwrt
         set -euo pipefail
         # 确保路径存在（在 make download 之后 feeds 会创建包目录）
         mkdir -p feeds/packages/libs/libdouble-conversion/patches
