@@ -108,3 +108,13 @@ awk '
 }
 { print }
 ' feeds/packages/lang/rust/Makefile > tmpfile && mv tmpfile feeds/packages/lang/rust/Makefile
+
+# 修补 libdouble-conversion 的 Makefile，添加 CMake policy 参数，解决 "Compatibility with CMake < 3.5" 错误
+if [ -f feeds/packages/libs/libdouble-conversion/Makefile ]; then
+  sed -i '/^PKG_RELEASE/ a\
+# 强制 CMake 最低策略以兼容新 CMake 的命令行变量警告\nCMAKE_OPTIONS += -DCMAKE_POLICY_VERSION_MINIMUM=3.5' feeds/packages/libs/libdouble-conversion/Makefile || true
+fi# 修补 libdouble-conversion 的 Makefile，添加 CMake policy 参数，解决 "Compatibility with CMake < 3.5" 错误
+if [ -f feeds/packages/libs/libdouble-conversion/Makefile ]; then
+  sed -i '/^PKG_RELEASE/ a\
+# 强制 CMake 最低策略以兼容新 CMake 的命令行变量警告\nCMAKE_OPTIONS += -DCMAKE_POLICY_VERSION_MINIMUM=3.5' feeds/packages/libs/libdouble-conversion/Makefile || true
+fi
