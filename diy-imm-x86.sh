@@ -108,3 +108,16 @@ awk '
 }
 { print }
 ' feeds/packages/lang/rust/Makefile > tmpfile && mv tmpfile feeds/packages/lang/rust/Makefile
+
+FILE=feeds/packages/libs/libdouble-conversion/Makefile
+# 1) 把 BUILD_SHARED_LIBS=ON 改为 OFF
+sed -i 's/BUILD_SHARED_LIBS=ON/BUILD_SHARED_LIBS=OFF/' "$FILE"
+# 2) 在 -DBUILD_TESTING=OFF 行后插入 PIC 选项
+sed -i '/-DBUILD_TESTING=OFF/ a \	-DCMAKE_POSITION_INDEPENDENT_CODE=ON' "$FILE"
+# 3) 改安装步骤，拷贝静态库而不是 .so
+sed -i 's/lib\*\.so\*/lib*.a/g' "$FILE"
+# 检查修改结果（显示相关行）
+echo "===== CMAKE_OPTIONS block ====="
+sed -n '/CMAKE_OPTIONS \+=[/,/^[[:space:]]*$$/p' "$FILE"
+echo "===== install block ====="
+sed -n '/define Package\/libdouble-conversion\/install/,/endef/p' "$FILE"
