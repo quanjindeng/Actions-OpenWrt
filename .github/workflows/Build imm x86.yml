@@ -101,28 +101,7 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
-    
-    - name: Add patch to bump CMake minimum for libdouble-conversion
-      run: |
-        cd openwrt
-        set -euo pipefail
-        # 确保路径存在（在 make download 之后 feeds 会创建包目录）
-        mkdir -p feeds/packages/libs/libdouble-conversion/patches
-       
-        cat > feeds/packages/libs/libdouble-conversion/patches/0001-update-cmake-minimum-version.patch <<'PATCH'
-        --- a/CMakeLists.txt
-        +++ b/CMakeLists.txt
-        @@ -1,1 +1,1 @@
-        -cmake_minimum_required(VERSION 2.8)
-        +cmake_minimum_required(VERSION 3.5)
-        PATCH
-
-        # 打印确认
-        echo "Created patch:"
-        ls -l feeds/packages/libs/libdouble-conversion/patches
-        echo "Patch content:"
-        sed -n '1,120p' feeds/packages/libs/libdouble-conversion/patches/0001-update-cmake-minimum-version.patch
-    
+        
     - name: 编译固件
       id: compile
       run: |
