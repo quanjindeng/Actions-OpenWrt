@@ -6,9 +6,9 @@ git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git packa
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/deng/luci-theme-argon
 git clone --depth 1 https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/deng/luci-app-unblockneteasemusic
 git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/deng/netspeedtest
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall package/deng/luci-app-passwall
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2 package/deng/luci-app-passwall2
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/deng/passwall-packages
+# git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall package/deng/luci-app-passwall
+# git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2 package/deng/luci-app-passwall2
+# git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/deng/passwall-packages
 git clone --depth 1 https://github.com/sbwml/luci-app-openlist package/deng/luci-app-openlist
 # git clone --depth 1 https://github.com/sbwml/luci-app-qbittorrent package/deng/luci-app-qbittorrent
 # git clone --depth 1 https://github.com/QiuSimons/openwrt-mos package/deng/luci-app-mosdns
@@ -110,3 +110,11 @@ awk '
 ' feeds/packages/lang/rust/Makefile > tmpfile && mv tmpfile feeds/packages/lang/rust/Makefile
 
 rm -rf feeds/packages/libs/libdouble-conversion
+
+# 移除 openwrt feeds 自带的核心库
+rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,trojan-plus,tuic-client,v2ray-plugin,xray-plugin,geoview,shadow-tls}
+git clone https://github.com/Openwrt-Passwall/openwrt-passwall-packages package/deng/passwall-packages
+
+# 移除 openwrt feeds 过时的luci版本
+rm -rf feeds/luci/applications/luci-app-passwall
+git clone https://github.com/Openwrt-Passwall/openwrt-passwall package/deng/passwall-luci
