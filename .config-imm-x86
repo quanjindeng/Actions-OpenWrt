@@ -310,7 +310,7 @@ CONFIG_PACKAGE_luci-app-passwall_INCLUDE_SingBox=y
 CONFIG_PACKAGE_luci-app-passwall_Nftables_Transparent_Proxy=y
 CONFIG_PACKAGE_luci-app-poweroff=y
 # CONFIG_PACKAGE_luci-app-qbittorrent is not set
-CONFIG_PACKAGE_luci-app-search-redirect=y
+# CONFIG_PACKAGE_luci-app-search-redirect is not set
 CONFIG_PACKAGE_luci-app-tailscale=y
 CONFIG_PACKAGE_luci-app-ttyd=y
 CONFIG_PACKAGE_luci-app-uhttpd=y
