@@ -27,7 +27,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: 检查服务器配置
       run: |
@@ -134,7 +134,7 @@ jobs:
         echo "status=success" >> $GITHUB_OUTPUT
 
     - name: 上传固件
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
         name: OpenWrt_imm_x64_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
@@ -149,7 +149,7 @@ jobs:
         echo "status=success" >> $GITHUB_OUTPUT
 
     - name: 发布固件
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v2
       if: steps.tag.outputs.status == 'success' && !cancelled()
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -165,7 +165,7 @@ jobs:
         keep_minimum_runs: 3
 
     - name: 清理Releases
-      uses: dev-drprasad/delete-older-releases@v0.2.1
+      uses: dev-drprasad/delete-older-releases@v0.3.4
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       with:
         keep_latest: 6
