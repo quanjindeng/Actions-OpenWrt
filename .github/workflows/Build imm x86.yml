@@ -24,8 +24,25 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
+    - name: 创建编译空间挂载点
+      run: |
+        sudo mkdir -p /mnt/workdir
+        sudo chown $USER:$GROUPS /mnt/workdir
+        
+    - name: 最大化编译空间
+      uses: easimon/maximize-build-space@master
+      with:
+        root-reserve-mb: 2048
+        swap-size-mb: 4096
+        build-mount-path: /mnt/workdir
+        overprovision-lvm: 'true'
+        remove-dotnet: 'true'
+        remove-android: 'true'
+        remove-haskell: 'true'
+        remove-codeql: 'true'
+        remove-docker-images: 'true'
+    
     - name: Checkout
       uses: actions/checkout@v6
 
@@ -62,8 +79,6 @@ jobs:
         python3-pyelftools qemu-utils re2c rsync scons squashfs-tools subversion swig texinfo uglifyjs \
         upx-ucl unzip vim wget xmlto xxd zlib1g-dev zstd
         sudo timedatectl set-timezone "$TZ"
-        sudo mkdir /mnt/workdir
-        sudo chmod -R 777 /mnt/workdir
         
     - name: 克隆源码
       working-directory: /mnt/workdir
