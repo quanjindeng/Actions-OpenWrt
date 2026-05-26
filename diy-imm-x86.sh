@@ -63,6 +63,7 @@ rm -rf package/feeds/packages/naiveproxy
 rm -rf feeds/packages/net/naiveproxy
 # rm -rf feeds/luci/applications/luci-app-netdata
 rm -rf feeds/luci/themes/luci-theme-argon
+rm -rf feeds/luci/applications/luci-app-adguardhome
 
 # 其他调整
 NAME=$"package/luci-app-unblockneteasemusic/root/usr/share/unblockneteasemusic" && mkdir -p $NAME/core
