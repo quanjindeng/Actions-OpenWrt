@@ -41,6 +41,7 @@ git clone --depth 1 https://github.com/sundaqiang/openwrt-packages deng-tmp3 && 
 git clone --depth 1 https://github.com/lisaac/luci-app-diskman package/deng/luci-app-diskman
 git clone --depth 1 https://github.com/asvow/luci-app-tailscale package/deng/luci-app-tailscale
 git clone --depth 1 https://github.com/sbwml/luci-app-quickfile package/deng/luci-app-quickfile
+git clone --depth 1 https://github.com/zhanghua000/luci-app-nginx package/deng/luci-app-nginx
 
 # Modify default theme（FROM uci-theme-bootstrap CHANGE TO luci-theme-material）
 sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' ./feeds/luci/collections/luci/Makefile
