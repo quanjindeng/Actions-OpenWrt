@@ -302,6 +302,7 @@ CONFIG_PACKAGE_luci-app-hd-idle=y
 CONFIG_PACKAGE_luci-app-ksmbd=y
 # CONFIG_PACKAGE_luci-app-mosdns is not set
 CONFIG_PACKAGE_luci-app-nginx=y
+CONFIG_PACKAGE_luci-app-openclash=y
 CONFIG_PACKAGE_luci-app-openlist=y
 # CONFIG_PACKAGE_luci-app-openvpn-server is not set
 CONFIG_PACKAGE_luci-app-package-manager=y
@@ -340,6 +341,7 @@ CONFIG_PACKAGE_luci-i18n-frpc-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-hd-idle-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-ksmbd-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-mosdns-zh-cn is not set
+CONFIG_PACKAGE_luci-i18n-openclash-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-openlist-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-openvpn-server-zh-cn is not set
 CONFIG_PACKAGE_luci-i18n-package-manager-zh-cn=y
