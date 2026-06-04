@@ -19,7 +19,7 @@ git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go package/deng/lu
 git clone --depth 1 https://github.com/esirplayground/luci-app-poweroff package/deng/luci-app-poweroff
 git clone --depth 1 https://github.com/tty228/luci-app-wechatpush.git package/deng/luci-app-wechatpush
 # git clone --depth 1 https://github.com/lisaac/luci-app-dockerman package/deng/luci-app-dockerman
-# git clone --depth 1 https://github.com/vernesong/OpenClash package/deng/luci-app-openclash
+git clone --depth 1 https://github.com/vernesong/OpenClash package/deng/luci-app-openclash
 # git clone --depth=1 https://github.com/fw876/helloworld.git package/deng/helloworld
 git clone --depth=1 https://github.com/brvphoenix/wrtbwmon package/deng/wrtbwmon
 git clone --depth=1 https://github.com/brvphoenix/luci-app-wrtbwmon package/deng/luci-app-wrtbwmon
@@ -65,6 +65,7 @@ rm -rf feeds/packages/net/naiveproxy
 # rm -rf feeds/luci/applications/luci-app-netdata
 rm -rf feeds/luci/themes/luci-theme-argon
 rm -rf feeds/luci/applications/luci-app-adguardhome
+rm -rf feeds/luci/applications/luci-app-openclash
 
 # 其他调整
 NAME=$"package/luci-app-unblockneteasemusic/root/usr/share/unblockneteasemusic" && mkdir -p $NAME/core
