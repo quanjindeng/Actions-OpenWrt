@@ -125,3 +125,4 @@ git clone https://github.com/Openwrt-Passwall/openwrt-passwall package/deng/pass
 rm -rf feeds/packages/net/daed
 rm -rf feeds/luci/applications/luci-app-daed
 git clone https://github.com/QiuSimons/luci-app-daed package/deng/luci-app-daed
+git clone https://github.com/QiuSimons/vmlinux-btf package/deng/vmlinux-btf
