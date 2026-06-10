@@ -120,3 +120,8 @@ git clone https://github.com/Openwrt-Passwall/openwrt-passwall-packages package/
 # 移除 openwrt feeds 过时的luci版本
 rm -rf feeds/luci/applications/luci-app-passwall
 git clone https://github.com/Openwrt-Passwall/openwrt-passwall package/deng/passwall-luci
+
+# 移除 luci-app-daed 过时的luci版本与依赖
+rm -rf feeds/packages/net/daed
+rm -rf feeds/luci/applications/luci-app-daed
+git clone https://github.com/QiuSimons/luci-app-daed package/deng/luci-app-daed
