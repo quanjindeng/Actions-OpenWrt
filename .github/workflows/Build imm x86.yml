@@ -20,6 +20,8 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
+  # 启用 ccache 加速编译
+  USE_CCACHE: 1
 
 jobs:
   build:
@@ -108,25 +110,33 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
         
-    - name: 缓存编译工具链
+    - name: 缓存工具链 (自动更新)
       uses: actions/cache@v4
       with:
-        path: |
-          /mnt/workdir/openwrt/staging_dir/toolchain*
-          /mnt/workdir/openwrt/staging_dir/host*
+        path: /mnt/workdir/openwrt/staging_dir/toolchain-*
         key: ${{ runner.os }}-toolchain-x86-${{ hashFiles('openwrt/include/version.mk', 'openwrt/.config') }}
         restore-keys: |
           ${{ runner.os }}-toolchain-x86-
 
-    - name: 缓存编译缓存
+    - name: 缓存编译器对象 (ccache)
       uses: actions/cache@v4
       with:
-        path: |
-          /mnt/workdir/openwrt/.ccache
-          /mnt/workdir/openwrt/build_dir/host*
-        key: ${{ runner.os }}-ccache-x86-${{ github.run_id }}
+        path: /mnt/workdir/openwrt/.ccache
+        key: ${{ runner.os }}-ccache-x86-${{ github.ref }}-${{ github.run_number }}
         restore-keys: |
+          ${{ runner.os }}-ccache-x86-${{ github.ref }}-
           ${{ runner.os }}-ccache-x86-
+          
+    - name: 显示缓存使用情况
+      run: |
+        echo "=== 缓存目录预检 ==="
+        if [ -d "/mnt/workdir/openwrt/staging_dir/toolchain-"* ]; then
+          du -sh /mnt/workdir/openwrt/staging_dir/toolchain-* 2>/dev/null | head -5
+        fi
+        if [ -d "/mnt/workdir/openwrt/.ccache" ]; then
+          du -sh /mnt/workdir/openwrt/.ccache
+          ccache -s 2>/dev/null || echo "ccache 统计不可用"
+        fi
           
     - name: 下载软件包
       id: package
