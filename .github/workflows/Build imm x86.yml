@@ -20,7 +20,6 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
-  # 启用 ccache 加速编译
   USE_CCACHE: 1
 
 jobs:
@@ -109,8 +108,8 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-        
-    - name: 缓存工具链 (自动更新)
+
+    - name: 恢复工具链缓存
       uses: actions/cache@v4
       with:
         path: |
@@ -120,7 +119,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-toolchain-x86-
 
-    - name: 缓存编译器对象 (ccache)
+    - name: 恢复编译缓存 (ccache)
       uses: actions/cache@v4
       with:
         path: /mnt/workdir/openwrt/.ccache
@@ -128,18 +127,23 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-ccache-x86-${{ github.ref }}-
           ${{ runner.os }}-ccache-x86-
-          
-    - name: 显示缓存使用情况
+
+    - name: 显示缓存恢复情况
       run: |
-        echo "=== 缓存目录预检 ==="
-        if [ -d "/mnt/workdir/openwrt/staging_dir/toolchain-"* ]; then
-          du -sh /mnt/workdir/openwrt/staging_dir/toolchain-* 2>/dev/null | head -5
+        echo "=== 缓存恢复检查 ==="
+        if [ -d "/mnt/workdir/openwrt/staging_dir/toolchain-x86_64_musl" ]; then
+          echo "✅ toolchain 缓存已恢复"
+          du -sh /mnt/workdir/openwrt/staging_dir/toolchain-x86_64_musl
+        else
+          echo "❌ toolchain 缓存未找到（首次编译会创建）"
         fi
         if [ -d "/mnt/workdir/openwrt/.ccache" ]; then
+          echo "✅ ccache 缓存已恢复"
           du -sh /mnt/workdir/openwrt/.ccache
-          ccache -s 2>/dev/null || echo "ccache 统计不可用"
+        else
+          echo "❌ ccache 缓存未找到（首次编译会创建）"
         fi
-          
+
     - name: 下载软件包
       id: package
       run: |
@@ -159,15 +163,30 @@ jobs:
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
         [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
         echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
-        
-    - name: 缓存使用统计
+
+    - name: 显示编译缓存统计
       if: always()
       run: |
+        echo "=== ccache 编译统计 ==="
+        if command -v ccache &> /dev/null; then
+          ccache -s
+        else
+          echo "ccache 未安装"
+        fi
+        echo ""
         echo "=== 缓存大小统计 ==="
-        du -sh /mnt/workdir/openwrt/staging_dir/toolchain-* 2>/dev/null || echo "toolchain: 未缓存"
-        du -sh /mnt/workdir/openwrt/.ccache 2>/dev/null || echo "ccache: 未缓存"
-        echo "=== 剩余缓存空间 ==="
-        # 估算使用量
+        if [ -d "/mnt/workdir/openwrt/staging_dir/toolchain-x86_64_musl" ]; then
+          echo "toolchain:"
+          du -sh /mnt/workdir/openwrt/staging_dir/toolchain-x86_64_musl
+        else
+          echo "toolchain: 0B"
+        fi
+        if [ -d "/mnt/workdir/openwrt/.ccache" ]; then
+          echo "ccache:"
+          du -sh /mnt/workdir/openwrt/.ccache
+        else
+          echo "ccache: 0B"
+        fi
 
     - name: 检查磁盘空间
       if: (!cancelled())
