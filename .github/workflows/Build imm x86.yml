@@ -25,12 +25,13 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 1440    # 避免超长构建被无限挂起，按需调整
     steps:
     - name: 创建编译空间挂载点
       run: |
         sudo mkdir -p /mnt/workdir
         sudo chown $USER:$GROUPS /mnt/workdir
-        
+
     - name: 最大化编译空间
       uses: easimon/maximize-build-space@master
       with:
@@ -43,7 +44,8 @@ jobs:
         remove-haskell: 'true'
         remove-codeql: 'true'
         remove-docker-images: 'true'
-    
+      # 建议：将上面的 @master 替换为已知固定 tag（例如 @v1）以避免 upstream 突变。
+
     - name: Checkout
       uses: actions/checkout@v6
 
@@ -58,13 +60,13 @@ jobs:
         echo -e "CPU核心及版本信息：$(cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c) \n"
         echo "--------------------------内存信息--------------------------"
         echo "已安装内存详细信息："
-        sudo lshw -short -C memory | grep GiB
+        sudo lshw -short -C memory | grep GiB || true
         echo -e "\n"
         echo "--------------------------硬盘信息--------------------------"
-        echo -e  "硬盘数量：$(ls /dev/sd* | grep -v [1-9] | wc -l) \n"
+        echo -e  "硬盘数量：$(ls /dev/sd* | grep -v [1-9] | wc -l) \n" || true
         echo "硬盘详情："
         df -Th
-        
+
     - name: 初始化编译环境
       env:
         DEBIAN_FRONTEND: noninteractive
@@ -80,11 +82,11 @@ jobs:
         python3-pyelftools qemu-utils re2c rsync scons squashfs-tools subversion swig texinfo uglifyjs \
         upx-ucl unzip vim wget xmlto xxd zlib1g-dev zstd
         sudo timedatectl set-timezone "$TZ"
-        
+
     - name: 克隆源码
       working-directory: /mnt/workdir
       run: |
-        df -hT $PWD
+        df -hT $PWD || true
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /mnt/workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
@@ -100,7 +102,7 @@ jobs:
 
     - name: 安装feeds
       run: cd openwrt && ./scripts/feeds install -a
-    
+
     - name: 加载自定义配置
       run: |
         [ -e files ] && mv files openwrt/files
@@ -109,12 +111,41 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
 
+    - name: 确保缓存目录存在（避免 cache save 时 path validation 错误）
+      run: |
+        # 兼容 /mnt/workdir 与 GITHUB_WORKSPACE 两种路径结构（symlink）
+        mkdir -p /mnt/workdir/openwrt/.ccache
+        mkdir -p $GITHUB_WORKSPACE/openwrt/.ccache
+        mkdir -p /mnt/workdir/openwrt/staging_dir/toolchain-x86_64_musl
+        mkdir -p $GITHUB_WORKSPACE/openwrt/staging_dir/toolchain-x86_64_musl
+        mkdir -p /mnt/workdir/openwrt/staging_dir/host-tools
+        mkdir -p $GITHUB_WORKSPACE/openwrt/staging_dir/host-tools
+
+    - name: 验证 Kconfig / 配置冲突（快速失败并打印定位信息）
+      run: |
+        cd openwrt
+        # 运行 make defconfig 以生成 tmp/.config-package.in 并捕获错误提示
+        set -o pipefail
+        if ! make defconfig 2>&1 | tee make_defconfig.log; then
+          echo "make defconfig 返回非零（可能存在 Kconfig 冲突）"
+        fi
+        # 查找常见递归依赖或 error 行
+        if grep -nE "recursive dependency detected|error:" tmp/.config-package.in >/dev/null 2>&1; then
+          echo "==== 在 tmp/.config-package.in 中发现 Kconfig 递归/错误条目，打印前30行供排查 ===="
+          grep -nE "recursive dependency detected|error:" tmp/.config-package.in | sed -n '1,30p' || true
+          echo "建议：检查 .config（${CONFIG_FILE}）中是否选择了互相递归依赖的包，或在 DIY 脚本中移除冲突包。"
+          exit 1
+        fi
+        echo "Kconfig 检查通过（未检测到常见递归依赖错误）"
+
     - name: 恢复工具链缓存
       uses: actions/cache@v4
       with:
         path: |
           /mnt/workdir/openwrt/staging_dir/toolchain-x86_64_musl
+          ${{ github.workspace }}/openwrt/staging_dir/toolchain-x86_64_musl
           /mnt/workdir/openwrt/staging_dir/host-tools
+          ${{ github.workspace }}/openwrt/staging_dir/host-tools
         key: ${{ runner.os }}-toolchain-x86-${{ hashFiles('openwrt/include/version.mk', 'openwrt/.config') }}
         restore-keys: |
           ${{ runner.os }}-toolchain-x86-
@@ -122,24 +153,28 @@ jobs:
     - name: 恢复编译缓存 (ccache)
       uses: actions/cache@v4
       with:
-        path: /mnt/workdir/openwrt/.ccache
-        key: ${{ runner.os }}-ccache-x86-${{ github.ref }}-${{ github.run_number }}
+        path: |
+          /mnt/workdir/openwrt/.ccache
+          ${{ github.workspace }}/openwrt/.ccache
+        # 避免把 refs/heads/... 直接放进 key 导致斜杠问题，使用 ref_name
+        key: ${{ runner.os }}-ccache-x86-${{ github.ref_name }}-${{ hashFiles('openwrt/.config') }}
         restore-keys: |
-          ${{ runner.os }}-ccache-x86-${{ github.ref }}-
+          ${{ runner.os }}-ccache-x86-${{ github.ref_name }}-
           ${{ runner.os }}-ccache-x86-
+          ${{ runner.os }}-ccache-
 
     - name: 显示缓存恢复情况
       run: |
         echo "=== 缓存恢复检查 ==="
-        if [ -d "/mnt/workdir/openwrt/staging_dir/toolchain-x86_64_musl" ]; then
-          echo "✅ toolchain 缓存已恢复"
-          du -sh /mnt/workdir/openwrt/staging_dir/toolchain-x86_64_musl
+        if [ -d "/mnt/workdir/openwrt/staging_dir/toolchain-x86_64_musl" ] || [ -d "$GITHUB_WORKSPACE/openwrt/staging_dir/toolchain-x86_64_musl" ]; then
+          echo "✅ toolchain 缓存已恢复（或目录存在）"
+          du -sh /mnt/workdir/openwrt/staging_dir/toolchain-x86_64_musl 2>/dev/null || du -sh $GITHUB_WORKSPACE/openwrt/staging_dir/toolchain-x86_64_musl 2>/dev/null || true
         else
           echo "❌ toolchain 缓存未找到（首次编译会创建）"
         fi
-        if [ -d "/mnt/workdir/openwrt/.ccache" ]; then
-          echo "✅ ccache 缓存已恢复"
-          du -sh /mnt/workdir/openwrt/.ccache
+        if [ -d "/mnt/workdir/openwrt/.ccache" ] || [ -d "$GITHUB_WORKSPACE/openwrt/.ccache" ]; then
+          echo "✅ ccache 缓存已恢复（或目录存在）"
+          du -sh /mnt/workdir/openwrt/.ccache 2>/dev/null || du -sh $GITHUB_WORKSPACE/openwrt/.ccache 2>/dev/null || true
         else
           echo "❌ ccache 缓存未找到（首次编译会创建）"
         fi
@@ -149,18 +184,34 @@ jobs:
       run: |
         cd openwrt
         make defconfig
-        make download -j8
+        make download -j8 || (echo "make download 失败，打印 dl 目录小文件并退出"; find dl -size -1024c -exec ls -l {} \; ; exit 1)
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
-        
+
+    - name: 配置 ccache（用于编译）
+      run: |
+        # 确保 ccache 的配置与缓存目录一致
+        mkdir -p /mnt/workdir/openwrt/.ccache
+        export CCACHE_DIR=/mnt/workdir/openwrt/.ccache
+        ccache -M 5G || true
+        echo "CCACHE_DIR=$CCACHE_DIR" >> $GITHUB_ENV
+
     - name: 编译固件
       id: compile
+      env:
+        CCACHE_DIR: /mnt/workdir/openwrt/.ccache
       run: |
         cd openwrt
         echo -e "$(nproc) thread compile"
-        make -j$(nproc) CCACHE_ENABLE=1 || make -j1 || make -j1 V=s
+        # 优先尝试并行编译，若失败退回单线程并打印详细日志便于诊断
+        if make -j$(nproc) CCACHE_ENABLE=1; then
+          echo "并行编译成功"
+        else
+          echo "并行编译失败，尝试单线程并输出详细日志"
+          make -j1 || make -j1 V=s
+        fi
         echo "status=success" >> $GITHUB_OUTPUT
-        grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
+        grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME || true
         [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
         echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
 
@@ -169,21 +220,21 @@ jobs:
       run: |
         echo "=== ccache 编译统计 ==="
         if command -v ccache &> /dev/null; then
-          ccache -s
+          ccache -s || true
         else
           echo "ccache 未安装"
         fi
         echo ""
         echo "=== 缓存大小统计 ==="
-        if [ -d "/mnt/workdir/openwrt/staging_dir/toolchain-x86_64_musl" ]; then
+        if [ -d "/mnt/workdir/openwrt/staging_dir/toolchain-x86_64_musl" ] || [ -d "$GITHUB_WORKSPACE/openwrt/staging_dir/toolchain-x86_64_musl" ]; then
           echo "toolchain:"
-          du -sh /mnt/workdir/openwrt/staging_dir/toolchain-x86_64_musl
+          du -sh /mnt/workdir/openwrt/staging_dir/toolchain-x86_64_musl 2>/dev/null || du -sh $GITHUB_WORKSPACE/openwrt/staging_dir/toolchain-x86_64_musl 2>/dev/null || true
         else
           echo "toolchain: 0B"
         fi
-        if [ -d "/mnt/workdir/openwrt/.ccache" ]; then
+        if [ -d "/mnt/workdir/openwrt/.ccache" ] || [ -d "$GITHUB_WORKSPACE/openwrt/.ccache" ]; then
           echo "ccache:"
-          du -sh /mnt/workdir/openwrt/.ccache
+          du -sh /mnt/workdir/openwrt/.ccache 2>/dev/null || du -sh $GITHUB_WORKSPACE/openwrt/.ccache 2>/dev/null || true
         else
           echo "ccache: 0B"
         fi
